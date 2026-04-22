@@ -1,26 +1,175 @@
 @import "tailwindcss";
+@import "../styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tailwind v4 theme mapping — exposes tokens as utilities
+   (bg-ink, text-bone, text-brand, bg-navy, bg-graphite,
+    font-display, font-body, font-mono, etc.) */
+@theme {
+  --color-ink: #000000;
+  --color-brand: #FF4B2B;
+  --color-brand-soft: rgba(255, 75, 43, 0.1);
+  --color-bone: #f5f5f0;
+  --color-navy: #050505;
+  --color-graphite: #111111;
+  --color-graphite-2: #0a0a0a;
+
+  --font-display: "PP Neue Montreal", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius-sharp: 4px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---------------- Base layer ---------------- */
+html,
+body {
+  height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto; /* Lenis controls smooth scroll */
+  background: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #FF4B2B !important;
+  color: white !important;
+}
+
+::-moz-selection {
+  background: #FF4B2B !important;
+  color: white !important;
+}
+
+/* Headings setup */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Controlled by utility classes in components */
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* ---------------- Font utility fallbacks ---------------- */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+/* ---------------- Custom scrollbar ---------------- */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF4B2B;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6A4D;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: #FF4B2B #000000;
+  scrollbar-width: thin;
+}
+
+/* ---------------- Grain overlay ---------------- */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 1px 2px;
+}
+
+/* ---------------- Halftone dot pattern ---------------- */
+.halftone-dots {
+  background-image: radial-gradient(
+    rgba(255, 75, 43, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 4px 4px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 80%);
+}
+
+/* ---------------- Lenis required reset ---------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------------- Utilities ---------------- */
+.cursor-luxury {
+  cursor: crosshair;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: #FF4B2B;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.link-underline:hover::after,
+.link-underline[data-active="true"]::after {
+  transform: scaleX(1);
 }
