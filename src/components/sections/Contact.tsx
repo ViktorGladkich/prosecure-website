@@ -52,17 +52,60 @@ export function Contact() {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
       
-      gsap.from(".contact-reveal", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        }
+      const mm = gsap.matchMedia();
+
+      // Desktop Animations
+      mm.add("(min-width: 1024px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          }
+        });
+
+        tl.from(".contact-title", {
+          y: 100,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power4.out"
+        })
+        .from(".contact-left-block", {
+          x: -120,
+          opacity: 0,
+          duration: 1.6,
+          ease: "expo.out"
+        }, "-=0.8")
+        .from(".contact-right-block", {
+          x: 120,
+          opacity: 0,
+          duration: 1.6,
+          ease: "expo.out"
+        }, "-=1.4")
+        .from(".contact-inner", {
+          y: 30,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out"
+        }, "-=1.0");
       });
+
+      // Mobile Animations
+      mm.add("(max-width: 1023px)", () => {
+        gsap.from(".contact-mobile-reveal", {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          }
+        });
+      });
+
+      return () => mm.revert();
     },
     { scope: sectionRef },
   );
@@ -91,7 +134,7 @@ export function Contact() {
     >
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
         {/* Giant Title */}
-        <div className="contact-reveal mb-16 lg:mb-24 text-center w-full">
+        <div className="contact-title contact-mobile-reveal mb-16 lg:mb-24 text-center w-full">
           <h2 className="font-display font-black uppercase text-[7vw] sm:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-[-0.05em] text-white">
             KONTAKT AUFNEHMEN<span className="text-brand"> .</span>
           </h2>
@@ -99,7 +142,7 @@ export function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
           {/* Left Column: Info & Socials */}
-          <div className="relative flex flex-col justify-between py-12 px-8 lg:p-12 overflow-hidden rounded-[32px] border border-white/10 shadow-2xl">
+          <div className="contact-left-block contact-mobile-reveal relative flex flex-col justify-between py-12 px-8 lg:p-12 overflow-hidden rounded-[32px] border border-white/10 shadow-2xl">
             {/* Background Image */}
             <Image
               src="/images/contact/contact.jpeg"
@@ -113,7 +156,7 @@ export function Contact() {
             <div className="absolute inset-0  z-0" />
 
             <div className="relative z-10 space-y-12">
-              <div className="contact-reveal">
+              <div className="contact-inner contact-mobile-reveal">
                 <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight max-w-md italic font-light opacity-90">
                   Lassen Sie uns gemeinsam das nächste Level Ihrer Sicherheit erreichen.
                 </p>
@@ -122,7 +165,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="contact-reveal space-y-2">
+              <div className="contact-inner contact-mobile-reveal space-y-2">
                 <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">Social Media</p>
                 <div className="flex flex-wrap gap-x-6 gap-y-2 font-display text-sm uppercase tracking-wider">
                   <a href="#" className="hover:text-brand transition-colors">Instagram</a>
@@ -134,7 +177,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="relative z-10 contact-reveal mt-24 lg:mt-0 grid grid-cols-2 gap-10">
+            <div className="relative z-10 contact-inner contact-mobile-reveal mt-24 lg:mt-0 grid grid-cols-2 gap-10">
               <div className="space-y-4">
                 <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">In Kontakt treten</p>
                 <a href={`mailto:${siteConfig.email}`} className="block font-display text-sm md:text-base hover:text-brand transition-colors lowercase">
@@ -151,7 +194,7 @@ export function Contact() {
           </div>
 
           {/* Right Column: Form */}
-          <div className="contact-reveal relative">
+          <div className="contact-right-block contact-mobile-reveal relative">
             <form
               ref={formRef}
               onSubmit={handleSubmit(onSubmit)}

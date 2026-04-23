@@ -213,19 +213,20 @@ export function Process() {
                   }`}
                 >
                   <div
-                    className="group relative rounded-[32px] overflow-hidden transition-transform duration-700 md:hover:scale-[1.01] md:backdrop-blur-xl md:backdrop-saturate-150"
+                    className="group relative rounded-[32px] overflow-hidden transition-transform duration-700 md:hover:scale-[1.01]"
                     style={{
-                      background: "rgba(18,18,26,0.94)",
-                      boxShadow: "0 1px 0 0 rgba(255,255,255,0.1) inset, 0 24px 64px rgba(0,0,0,0.4)",
-                      border: "1px solid rgba(255,255,255,0.09)",
+                      background: "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(120,120,135,0.06) 40%, rgba(80,80,95,0.08) 100%)",
+                      backdropFilter: "blur(24px) saturate(1.6)",
+                      WebkitBackdropFilter: "blur(24px) saturate(1.6)",
+                      boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.3) inset, 0 0 0 0.5px rgba(255,255,255,0.08), 0 6px 20px rgba(0,0,0,0.25)",
+                      border: "1px solid rgba(255,255,255,0.15)",
                     }}
                   >
                     {/* Top glass shine — exact same as buttons */}
                     <span 
-                      className="absolute inset-0 pointer-events-none rounded-[32px]"
-                      style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)" }}
+                      className="absolute inset-0 z-20 pointer-events-none rounded-[32px]"
+                      style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.08) 35%, transparent 50%, rgba(0,0,0,0.05) 100%)" }}
                     />
-
                     {/* Image Area */}
                     <div className="relative w-full h-[220px] lg:h-[280px] overflow-hidden">
                       <Image
