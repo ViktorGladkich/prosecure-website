@@ -1,6 +1,30 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Tailwind v4 theme mapping — exposes tokens as utilities
    (bg-ink, text-bone, text-brand, bg-navy, bg-graphite,
     font-display, font-body, font-mono, etc.) */
@@ -13,7 +37,7 @@
   --color-graphite: #111111;
   --color-graphite-2: #0a0a0a;
 
-  --font-display: "PP Neue Montreal", "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 

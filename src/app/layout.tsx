@@ -26,8 +26,6 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${interTight.variable}`}>
       <head>
-        {/* We use external stylesheet for Neue Montreal to prevent Next.js build crashes from local font binaries */}
-        <link href="https://fonts.cdnfonts.com/css/neue-montreal" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

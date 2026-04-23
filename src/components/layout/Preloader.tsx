@@ -156,40 +156,44 @@ export function Preloader() {
                 className="relative w-full h-full"
               >
                   {/* 4 Images to Flash (Top to Bottom) */}
-                  <div ref={(el) => { if (el) extraImagesRef.current[0] = el.querySelector('img') as HTMLImageElement }}>
+                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[0] = el.querySelector('img') as HTMLImageElement }}>
                     <Image 
                       className="absolute inset-0 w-full h-full object-cover z-40" 
                       src="/images/preloader/guard.jpeg" 
                       alt="" 
                       fill
                       priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <div ref={(el) => { if (el) extraImagesRef.current[1] = el.querySelector('img') as HTMLImageElement }}>
+                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[1] = el.querySelector('img') as HTMLImageElement }}>
                     <Image 
                       className="absolute inset-0 w-full h-full object-cover z-30" 
                       src="/images/preloader/scanner.jpeg" 
                       alt="" 
                       fill
                       priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <div ref={(el) => { if (el) extraImagesRef.current[2] = el.querySelector('img') as HTMLImageElement }}>
+                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[2] = el.querySelector('img') as HTMLImageElement }}>
                     <Image 
                       className="absolute inset-0 w-full h-full object-cover z-20" 
                       src="/images/preloader/patrol.png" 
                       alt="" 
                       fill
                       priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <div ref={(el) => { if (el) extraImagesRef.current[3] = el.querySelector('img') as HTMLImageElement }}>
+                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[3] = el.querySelector('img') as HTMLImageElement }}>
                     <Image 
                       className="absolute inset-0 w-full h-full object-cover z-10" 
                       src="/images/preloader/control.jpeg" 
                       alt="" 
                       fill
                       priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
 
@@ -200,6 +204,7 @@ export function Preloader() {
                     alt="Final Frame" 
                     fill
                     priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
               </div>
           </div>

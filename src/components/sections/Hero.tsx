@@ -216,7 +216,7 @@ export function Hero() {
           </div>
 
           {/* Right — Email Form Card — Liquid Glass */}
-          <div className="flex flex-col gap-6 w-full md:max-w-sm text-left md:items-start animate-up">
+          <div className="flex flex-col gap-6 w-full md:max-w-sm text-left md:items-start animate-scale">
             <div
               className="relative w-full sm:w-[380px] rounded-3xl p-8 mt-2 overflow-hidden"
               style={{
