@@ -50,9 +50,9 @@ export function Footer() {
       aria-label="Seitenfuß"
     >
       {/* Top Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-b border-brand/30">
+      <div className="grid grid-cols-1 md:grid-cols-3 border-brand/30">
         {/* Contact Column */}
-        <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-brand/30 flex flex-col justify-between">
+        <div className="p-8 md:p-12 lg:p-16 border border-brand/30 md:border-y-0 md:border-l-0 md:border-r border-brand/30 flex flex-col justify-between">
           <div>
             <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Kontakt</h3>
             <div className="space-y-6">
@@ -72,7 +72,7 @@ export function Footer() {
         </div>
 
         {/* Connect Column */}
-        <div className="p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-brand/30">
+        <div className="p-8 md:p-12 lg:p-16 border-x border-b md:border-x-0 md:border-y-0 md:border-r border-brand/30">
           <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Social Media</h3>
           <ul className="space-y-4 font-display text-lg lg:text-xl">
             <li><a href="#" className="hover:text-brand transition-colors">Instagram</a></li>
@@ -82,7 +82,7 @@ export function Footer() {
         </div>
 
         {/* Subscribe Column */}
-        <div className="p-8 md:p-12 lg:p-16">
+        <div className="p-8 md:p-12 lg:p-16 border-x border-b md:border-none border-brand/30 mb-12 md:mb-0">
           <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Newsletter</h3>
           <div className="relative group">
             <input 

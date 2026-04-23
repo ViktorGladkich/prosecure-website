@@ -213,6 +213,7 @@ export function Navigation() {
              >
                <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
                <span className="relative z-10 hidden sm:inline text-white text-sm uppercase font-display tracking-wide">Anrufen</span>
+               <Phone className="relative z-10 w-4 h-4 text-white/90 group-hover:scale-110 transition-transform" />
              </a>
            </div>
         </div>

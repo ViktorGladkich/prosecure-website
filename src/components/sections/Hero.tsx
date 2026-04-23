@@ -184,7 +184,7 @@ export function Hero() {
               {/* Secondary — glass metal pill */}
               <a
                 href="#services"
-                className="group relative flex items-center gap-3 px-7 py-3.5 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                className="group hidden md:flex relative items-center gap-3 px-7 py-3.5 rounded-full overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 style={{
                   background: "linear-gradient(180deg, rgba(200,200,210,0.18) 0%, rgba(120,120,135,0.12) 40%, rgba(80,80,95,0.15) 100%)",
                   backdropFilter: "blur(24px) saturate(1.6)",
