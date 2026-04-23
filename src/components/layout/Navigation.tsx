@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useGSAP, gsap } from "@/hooks/useGSAP";
 import { CustomEase } from "gsap/CustomEase";
@@ -184,6 +184,7 @@ export function Navigation() {
               style={BRAND_BTN}
             >
               <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+              <PhoneCall className="relative z-10 w-3.5 h-3.5 text-white group-hover:scale-110 transition-transform duration-300" />
               <span className="relative z-10 hidden sm:inline text-white text-sm uppercase font-display tracking-wide">Anrufen</span>
             </a>
           </div>
