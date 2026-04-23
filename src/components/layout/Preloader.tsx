@@ -5,16 +5,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-/**
- * Premium Willem-inspired Preloader for ProSecure.
- * Using a perfectly balanced German word 'SICHERHEIT' (5 + 5 split) 
- * to ensure the expansion window is mathematically and visually centered.
- */
 export function Preloader() {
   const [mounted, setMounted] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
   
-  // Refs
   const loaderLettersRef = useRef<HTMLSpanElement[]>([]);
   const boxRef = useRef<HTMLDivElement | null>(null);
   const growingImageRef = useRef<HTMLDivElement | null>(null);
@@ -49,16 +43,15 @@ export function Preloader() {
         }
       });
 
-      // Lock scroll
       document.body.style.overflow = "hidden";
 
-      // 1. Initial State
+      // Initial state
       gsap.set(h1Ref.current, { opacity: 1 });
       gsap.set(loaderLettersRef.current, { yPercent: 110 });
       gsap.set(boxRef.current, { width: "0em" });
       gsap.set(extraImagesRef.current, { opacity: 1 });
 
-      // 2. Animate 'SICHERHEIT' Letters Up
+      // Letters fly up
       tl.to(loaderLettersRef.current, {
         yPercent: 0,
         stagger: 0.03,
@@ -66,13 +59,13 @@ export function Preloader() {
         ease: "expo.out"
       });
 
-      // 3. Split the word 'SICHE' | 'RHEIT'
+      // Word splits open
       tl.to(boxRef.current, {
         width: "2.2em",
         duration: 1.4,
       }, "+=0.2");
 
-      // 4. Cycle Images
+      // Images cycle
       if (extraImagesRef.current.length > 0) {
         tl.to(extraImagesRef.current, {
           opacity: 0,
@@ -82,7 +75,7 @@ export function Preloader() {
         }, "-=0.2");
       }
 
-      // 5. Expand to Full Viewport
+      // Box expands to full screen
       tl.to(boxRef.current, {
         width: "115vw", 
         height: "115vh",
@@ -90,21 +83,18 @@ export function Preloader() {
         ease: "expo.inOut",
       }, "+=0.2");
 
-      // Start fading out the footer exactly when expansion begins
       tl.to(footerRef.current, {
         opacity: 0,
         duration: 1,
         ease: "power2.inOut"
       }, "<");
 
-      // reveal the real hero behind
       tl.to(growingImageRef.current, {
         opacity: 0,
         duration: 1.2,
         ease: "power2.inOut"
       }, "-=1.0");
 
-      // Fade out letters and the secondary status text
       tl.to([headingStartRef.current, headingEndRef.current, statusRef.current], {
         opacity: 0,
         x: (i) => i === 0 ? "-20vw" : (i === 1 ? "20vw" : "0"),
@@ -112,7 +102,6 @@ export function Preloader() {
         ease: "power3.inOut"
       }, "<");
 
-      // Final Fade of the preloader background
       tl.to(container, {
         opacity: 0,
         duration: 1,
@@ -132,8 +121,7 @@ export function Preloader() {
     >
       <div className="relative w-full h-full flex flex-col items-center justify-center">
         
-        {/* Main Brand/Status Word: SICHERHEIT (Security) - Split 5/5 for perfect symmetry */}
-        <div 
+        <div
           ref={h1Ref} 
           className="flex items-center justify-center font-display text-[11.5vw] sm:text-[11vw] md:text-[10vw] font-bold leading-[0.7] text-[#201d1d] whitespace-nowrap opacity-0 relative"
         >
@@ -155,7 +143,6 @@ export function Preloader() {
                 ref={growingImageRef} 
                 className="relative w-full h-full"
               >
-                  {/* 4 Images to Flash (Top to Bottom) */}
                   <div className="absolute inset-0 z-40" ref={(el) => { if (el) extraImagesRef.current[0] = el; }}>
                     <img 
                       className="absolute inset-0 w-full h-full object-cover" 
@@ -193,11 +180,10 @@ export function Preloader() {
                     />
                   </div>
 
-                  {/* Final Frame (Revealed when all above are hidden) */}
-                  <img 
-                    className="absolute inset-0 w-full h-full object-cover z-0" 
-                    src="/images/preloader/hero.jpeg" 
-                    alt="Final Frame" 
+                  <img
+                    className="absolute inset-0 w-full h-full object-cover z-0"
+                    src="/images/preloader/hero.jpeg"
+                    alt=""
                     loading="lazy" 
                     decoding="async"
                   />
@@ -214,7 +200,6 @@ export function Preloader() {
 
         </div>
 
-        {/* Status indicator in German */}
         <div ref={statusRef} className="mt-8 overflow-hidden">
           <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#201d1d]/40 animate-pulse">
             System wird geladen...

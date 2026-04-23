@@ -38,7 +38,6 @@ export function Services() {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
 
-      // Header fade up
       gsap.fromTo(
         ".services-header-anim",
         { y: 60, opacity: 0 },
@@ -54,7 +53,6 @@ export function Services() {
         }
       );
 
-      // Badge reveal
       gsap.fromTo(
         ".services-badge-anim",
         { scale: 0.5, opacity: 0 },
@@ -71,7 +69,6 @@ export function Services() {
         }
       );
 
-      // List items reveal
       gsap.fromTo(
         ".service-item-anim",
         { y: 40, opacity: 0 },

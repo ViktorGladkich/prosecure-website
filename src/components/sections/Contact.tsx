@@ -52,7 +52,6 @@ export function Contact() {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
       
-      // Reveal animations
       gsap.from(".contact-reveal", {
         y: 40,
         opacity: 0,

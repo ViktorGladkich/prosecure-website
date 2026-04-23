@@ -46,9 +46,15 @@
 }
 
 /* ---------------- Base layer ---------------- */
-html,
-body {
+html {
   height: 100%;
+  /* Prevent layout reflow when mobile address bar shows/hides */
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100%;
+  overscroll-behavior: none;
 }
 
 html {

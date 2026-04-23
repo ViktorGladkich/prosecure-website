@@ -1,4 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  interactiveWidget: "resizes-visual",
+};
 import { Toaster } from "sonner";
 import "./globals.css";
 import { LenisProvider } from "@/components/layout/LenisProvider";

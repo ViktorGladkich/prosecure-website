@@ -13,7 +13,6 @@ export function About() {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
       
-      // Header fade up
       gsap.fromTo(
         ".about-header-anim",
         { y: 50, opacity: 0 },
@@ -29,7 +28,6 @@ export function About() {
         }
       );
 
-      // Split text reveal effect
       const words = textRef.current?.querySelectorAll(".reveal-word");
       if (words) {
         gsap.fromTo(
@@ -48,7 +46,6 @@ export function About() {
           }
         );
       }
-      // Cards Parallax reveal & scroll motion
       const cards = gsap.utils.toArray(".about-card");
       cards.forEach((card, i) => {
         const el = card as HTMLElement;
