@@ -152,6 +152,7 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
               src={item.img}
               alt={item.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover"
             />
           </div>
@@ -171,6 +172,7 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
               src={item.img}
               alt={item.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover transition-all duration-700"
             />
           </motion.div>

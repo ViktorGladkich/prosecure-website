@@ -232,6 +232,7 @@ export function Process() {
                         src={step.img}
                         alt={step.title}
                         fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover brightness-90 group-hover:brightness-110 group-hover:scale-105 transition-all duration-1000 ease-out"
                       />
                       {/* Gradient overlay for text readability */}

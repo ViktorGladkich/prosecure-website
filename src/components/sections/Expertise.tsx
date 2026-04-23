@@ -96,6 +96,7 @@ export function Expertise() {
                         src={area.image} 
                         alt={area.title} 
                         fill 
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
                      />
                   </div>
