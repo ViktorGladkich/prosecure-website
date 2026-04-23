@@ -135,7 +135,7 @@ export function Preloader() {
         {/* Main Brand/Status Word: SICHERHEIT (Security) - Split 5/5 for perfect symmetry */}
         <div 
           ref={h1Ref} 
-          className="flex items-center justify-center font-display text-[14vw] md:text-[10vw] font-bold leading-[0.7] text-[#201d1d] whitespace-nowrap opacity-0 relative"
+          className="flex items-center justify-center font-display text-[11.5vw] sm:text-[11vw] md:text-[10vw] font-bold leading-[0.7] text-[#201d1d] whitespace-nowrap opacity-0 relative"
         >
           
           <div ref={headingStartRef} className="flex overflow-hidden shrink-0">

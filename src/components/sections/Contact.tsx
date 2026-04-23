@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import {
   gsap,
   registerScrollTrigger,
@@ -92,15 +93,27 @@ export function Contact() {
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
         {/* Giant Title */}
         <div className="contact-reveal mb-16 lg:mb-24 text-center w-full">
-          <h2 className="font-display font-black uppercase text-[7vw] sm:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-[-0.05em] text-brand">
-            KONTAKT AUFNEHMEN<span className="text-white"> .</span>
+          <h2 className="font-display font-black uppercase text-[7vw] sm:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-[-0.05em] text-white">
+            KONTAKT AUFNEHMEN<span className="text-brand"> .</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
           {/* Left Column: Info & Socials */}
-          <div className="flex flex-col justify-between py-2">
-            <div className="space-y-12">
+          <div className="relative flex flex-col justify-between py-12 px-8 lg:p-12 overflow-hidden rounded-[32px] border border-white/10 shadow-2xl">
+            {/* Background Image */}
+            <Image
+              src="/images/contact/contact.jpeg"
+              alt="Security Guards"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover opacity-60"
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 z-0" />
+            <div className="absolute inset-0  z-0" />
+
+            <div className="relative z-10 space-y-12">
               <div className="contact-reveal">
                 <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight max-w-md italic font-light opacity-90">
                   Lassen Sie uns gemeinsam das nächste Level Ihrer Sicherheit erreichen.
@@ -122,7 +135,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="contact-reveal mt-24 lg:mt-0 grid grid-cols-2 gap-10">
+            <div className="relative z-10 contact-reveal mt-24 lg:mt-0 grid grid-cols-2 gap-10">
               <div className="space-y-4">
                 <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">In Kontakt treten</p>
                 <a href={`mailto:${siteConfig.email}`} className="block font-display text-sm md:text-base hover:text-brand transition-colors lowercase">
