@@ -20,13 +20,13 @@ export function Hero() {
       gsap.fromTo(
         ".hero-title-mask",
         { y: 100, opacity: 0, scale: 0.8 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          scale: 1, 
-          duration: 2, 
-          delay: ENTRY_DELAY - 0.5, 
-          ease: "expo.out" 
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 2,
+          delay: ENTRY_DELAY - 0.5,
+          ease: "expo.out"
         }
       );
 
@@ -34,25 +34,25 @@ export function Hero() {
       gsap.fromTo(
         ".animate-up",
         { y: 50, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1.5, 
-          stagger: 0.15, 
-          delay: ENTRY_DELAY, 
-          ease: "power4.out" 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          stagger: 0.15,
+          delay: ENTRY_DELAY,
+          ease: "power4.out"
         }
       );
 
       gsap.fromTo(
         ".animate-scale",
         { scale: 0.9, opacity: 0 },
-        { 
-          scale: 1, 
-          opacity: 1, 
-          duration: 1.8, 
-          delay: ENTRY_DELAY + 0.3, 
-          ease: "power3.out" 
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.8,
+          delay: ENTRY_DELAY + 0.3,
+          ease: "power3.out"
         }
       );
 

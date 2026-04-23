@@ -24,6 +24,8 @@ export function useLenis(): React.RefObject<Lenis | null> {
       touchMultiplier: 1.4,
     });
     lenisRef.current = lenis;
+    // Глобальный доступ для stop()/start() из других компонентов
+    (window as unknown as Record<string, unknown>).lenis = lenis;
 
     const onScroll = () => ScrollTrigger.update();
     lenis.on("scroll", onScroll);
