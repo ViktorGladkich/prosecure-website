@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${interTight.variable}`}>
       <head>
+        {/* We use local font files for Neue Montreal defined in globals.css */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

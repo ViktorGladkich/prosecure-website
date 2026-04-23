@@ -44,17 +44,7 @@ export function Hero() {
         }
       );
 
-      gsap.fromTo(
-        ".animate-scale",
-        { scale: 0.9, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 1.8,
-          delay: ENTRY_DELAY + 0.3,
-          ease: "power3.out"
-        }
-      );
+
 
       // Big text: flies upward + shrinks as user scrolls — arrives at nav position
       gsap.to(".hero-big-text", {
@@ -131,9 +121,9 @@ export function Hero() {
               <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%)" }} />
               <div className="relative z-10 flex -space-x-2">
                 {/* eslint-disable @next/next/no-img-element */}
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=1" alt="avatar" /></div>
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=2" alt="avatar" /></div>
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=3" alt="avatar" /></div>
+                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=1" alt="avatar" loading="lazy" decoding="async" /></div>
+                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=2" alt="avatar" loading="lazy" decoding="async" /></div>
+                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=3" alt="avatar" loading="lazy" decoding="async" /></div>
                 {/* eslint-enable @next/next/no-img-element */}
               </div>
               <div className="relative z-10 text-[10px] leading-tight flex flex-col ml-0.5">
@@ -216,7 +206,7 @@ export function Hero() {
           </div>
 
           {/* Right — Email Form Card — Liquid Glass */}
-          <div className="flex flex-col gap-6 w-full md:max-w-sm text-left md:items-start animate-scale">
+          <div className="flex flex-col gap-6 w-full md:max-w-sm text-left md:items-start animate-up">
             <div
               className="relative w-full sm:w-[380px] rounded-3xl p-8 mt-2 overflow-hidden"
               style={{

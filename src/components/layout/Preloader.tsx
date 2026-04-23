@@ -20,7 +20,7 @@ export function Preloader() {
   const growingImageRef = useRef<HTMLDivElement | null>(null);
   const headingStartRef = useRef<HTMLDivElement | null>(null);
   const headingEndRef = useRef<HTMLDivElement | null>(null);
-  const extraImagesRef = useRef<HTMLImageElement[]>([]);
+  const extraImagesRef = useRef<HTMLDivElement[]>([]);
   const h1Ref = useRef<HTMLDivElement | null>(null);
   const statusRef = useRef<HTMLDivElement | null>(null);
   const footerRef = useRef<HTMLDivElement | null>(null);
@@ -156,55 +156,50 @@ export function Preloader() {
                 className="relative w-full h-full"
               >
                   {/* 4 Images to Flash (Top to Bottom) */}
-                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[0] = el.querySelector('img') as HTMLImageElement }}>
-                    <Image 
-                      className="absolute inset-0 w-full h-full object-cover z-40" 
+                  <div className="absolute inset-0 z-40" ref={(el) => { if (el) extraImagesRef.current[0] = el; }}>
+                    <img 
+                      className="absolute inset-0 w-full h-full object-cover" 
                       src="/images/preloader/guard.jpeg" 
                       alt="" 
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy" 
+                      decoding="async"
                     />
                   </div>
-                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[1] = el.querySelector('img') as HTMLImageElement }}>
-                    <Image 
-                      className="absolute inset-0 w-full h-full object-cover z-30" 
+                  <div className="absolute inset-0 z-30" ref={(el) => { if (el) extraImagesRef.current[1] = el; }}>
+                    <img 
+                      className="absolute inset-0 w-full h-full object-cover" 
                       src="/images/preloader/scanner.jpeg" 
                       alt="" 
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy" 
+                      decoding="async"
                     />
                   </div>
-                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[2] = el.querySelector('img') as HTMLImageElement }}>
-                    <Image 
-                      className="absolute inset-0 w-full h-full object-cover z-20" 
+                  <div className="absolute inset-0 z-20" ref={(el) => { if (el) extraImagesRef.current[2] = el; }}>
+                    <img 
+                      className="absolute inset-0 w-full h-full object-cover" 
                       src="/images/preloader/patrol.png" 
                       alt="" 
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy" 
+                      decoding="async"
                     />
                   </div>
-                  <div className="relative w-full h-full" ref={(el) => { if (el) extraImagesRef.current[3] = el.querySelector('img') as HTMLImageElement }}>
-                    <Image 
-                      className="absolute inset-0 w-full h-full object-cover z-10" 
+                  <div className="absolute inset-0 z-10" ref={(el) => { if (el) extraImagesRef.current[3] = el; }}>
+                    <img 
+                      className="absolute inset-0 w-full h-full object-cover" 
                       src="/images/preloader/control.jpeg" 
                       alt="" 
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy" 
+                      decoding="async"
                     />
                   </div>
 
                   {/* Final Frame (Revealed when all above are hidden) */}
-                  <Image 
+                  <img 
                     className="absolute inset-0 w-full h-full object-cover z-0" 
                     src="/images/preloader/hero.jpeg" 
                     alt="Final Frame" 
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    loading="lazy" 
+                    decoding="async"
                   />
               </div>
           </div>
