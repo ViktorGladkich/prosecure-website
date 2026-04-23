@@ -64,24 +64,25 @@ const SNAKE_PATH = [
 
 export function Process() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const pathRef = useRef<SVGPathElement | null>(null);
+  const pathRef    = useRef<SVGPathElement | null>(null);
 
   useGSAP(
     () => {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
-      const scope = sectionRef.current;
-      const path = pathRef.current;
+      const scope  = sectionRef.current;
+      const path   = pathRef.current;
       if (!scope || !path) return;
 
-      // Set up stroke dash for draw animation
-      const length = path.getTotalLength();
-      gsap.set(path, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
+      const mobile = window.innerWidth < 768;
 
-      // Draw the snake on scroll
+      // На мобильном убираем дорогой SVG-фильтр (feGaussianBlur пересчитывается каждый кадр)
+      if (mobile) path.removeAttribute("filter");
+
+      const length = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+
+      // Snake-линия: на мобильном увеличиваем scrub — меньше обновлений в секунду
       gsap.to(path, {
         strokeDashoffset: 0,
         ease: "none",
@@ -89,47 +90,54 @@ export function Process() {
           trigger: scope,
           start: "top 70%",
           end: "bottom 90%",
-          scrub: 0.2,
+          scrub: mobile ? 2 : 0.4,
         },
       });
 
-      // Header fade up
+      // Заголовок
       gsap.fromTo(
         ".process-header-anim",
         { y: 50, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1.2, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
           stagger: 0.1,
           ease: "power4.out",
-          scrollTrigger: {
-            trigger: ".process-header-anim",
-            start: "top 85%",
-          }
+          scrollTrigger: { trigger: ".process-header-anim", start: "top 85%" },
         }
       );
 
-      // Animate each card sliding in
+      // Карточки: на мобильном только opacity (без x-смещения и scrub)
       const cards = scope.querySelectorAll<HTMLElement>("[data-step-card]");
-      cards.forEach((card, i) => {
-        const isRight = i % 2 === 0;
+      if (mobile) {
         gsap.fromTo(
-          card,
-          { x: isRight ? 100 : -100, opacity: 0 },
+          cards,
+          { opacity: 0, y: 30 },
           {
-            x: 0,
             opacity: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              end: "top 60%",
-              scrub: 1,
-            },
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: { trigger: scope, start: "top 60%" },
           }
         );
-      });
+      } else {
+        cards.forEach((card, i) => {
+          const isRight = i % 2 === 0;
+          gsap.fromTo(
+            card,
+            { x: isRight ? 100 : -100, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              ease: "power3.out",
+              scrollTrigger: { trigger: card, start: "top 90%", end: "top 60%", scrub: 1 },
+            }
+          );
+        });
+      }
     },
     { scope: sectionRef }
   );
@@ -173,7 +181,7 @@ export function Process() {
 
       {/* ── Heading — centered ── */}
       <div className="relative z-10 px-[5vw] pt-32 lg:pt-44 pb-20 lg:pb-32 text-center">
-        <span className="process-header-anim block font-mono text-xs uppercase tracking-[0.3em] text-brand mb-6 animate-pulse">
+        <span className="process-header-anim block font-mono text-xs uppercase tracking-[0.3em] text-brand mb-6">
           [ Strategischer Ablauf ]
         </span>
         <h2
@@ -204,14 +212,12 @@ export function Process() {
                     isRight ? "lg:ml-auto" : "lg:mr-auto"
                   }`}
                 >
-                  <div 
-                    className="group relative rounded-[32px] overflow-hidden transition-all duration-700 hover:scale-[1.01]"
+                  <div
+                    className="group relative rounded-[32px] overflow-hidden transition-transform duration-700 md:hover:scale-[1.01] md:backdrop-blur-xl md:backdrop-saturate-150"
                     style={{
-                      background: "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(80,80,95,0.1) 100%)",
-                      backdropFilter: "blur(24px) saturate(1.5)",
-                      WebkitBackdropFilter: "blur(24px) saturate(1.5)",
-                      boxShadow: "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 24px 64px rgba(0,0,0,0.3)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      background: "rgba(18,18,26,0.94)",
+                      boxShadow: "0 1px 0 0 rgba(255,255,255,0.1) inset, 0 24px 64px rgba(0,0,0,0.4)",
+                      border: "1px solid rgba(255,255,255,0.09)",
                     }}
                   >
                     {/* Top glass shine — exact same as buttons */}
@@ -236,7 +242,7 @@ export function Process() {
                     {/* Content Area */}
                     <div className="relative p-8 lg:p-10">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="w-2.5 h-2.5 rounded-full bg-brand shadow-[0_0_12px_#FF4B2B] animate-pulse" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-brand shadow-[0_0_12px_#FF4B2B]" />
                         <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-brand font-bold">
                           Meilenstein {step.index}
                         </span>
@@ -251,8 +257,8 @@ export function Process() {
                       </p>
                     </div>
 
-                    {/* Hover Glow Accent */}
-                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-brand/0 group-hover:bg-brand/10 rounded-full blur-[60px] transition-colors duration-1000" />
+                    {/* Hover Glow Accent — desktop only via CSS hover media query */}
+                    <div className="hidden md:block absolute -bottom-10 -right-10 w-40 h-40 bg-brand/0 group-hover:bg-brand/10 rounded-full blur-[60px] transition-colors duration-1000" />
                   </div>
                 </div>
               </div>
