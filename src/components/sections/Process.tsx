@@ -59,7 +59,7 @@ const SNAKE_PATH = [
   "L 880 1980",
   // Snake to LEFT — Card 4
   "C 880 2120 120 2120 120 2260",
-  "L 120 2800",
+  "L 120 2580",
 ].join(" ");
 
 export function Process() {
