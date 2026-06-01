@@ -27,8 +27,8 @@ const closeButtonStyle: React.CSSProperties = {
 };
 
 const ctaStyle: React.CSSProperties = {
-  background: "linear-gradient(135deg, rgba(255,75,43,0.9) 0%, rgba(255,120,50,0.85) 50%, rgba(255,75,43,0.95) 100%)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(255,75,43,0.4)",
+  background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
   border: "1px solid rgba(255,255,255,0.2)",
 };
 
@@ -41,14 +41,14 @@ export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLin
         className="fixed inset-y-0 left-0 z-[100] w-full max-w-md text-white shadow-[0_0_80px_rgba(0,0,0,0.8)]"
         style={{ display: "none" }}
       >
-        <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#FF4B2B" }} />
+        <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#1B3550" }} />
         <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#FFFFFF" }} />
         <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#000000" }} />
 
         <div className="relative z-[1] flex flex-col h-full">
           <div className="flex h-24 items-center justify-between px-8 md:px-12 border-b border-white/5">
             <div className="flex items-baseline font-display text-2xl tracking-tight text-white select-none">
-              prosecure<span className="text-brand ml-0.5">.</span>
+              prosecure<span className="text-[#7CB3D1] ml-0.5">.</span>
             </div>
             <button
               type="button"
@@ -77,7 +77,7 @@ export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLin
                     <div className="relative overflow-hidden h-[1.12em] flex flex-col items-start justify-start">
                       <span
                         className="block transition-transform duration-500 ease-[cubic-bezier(0.65,0.01,0.05,0.99)] group-hover:-translate-y-[1.12em]"
-                        style={{ textShadow: "0 1.12em 0 #FF4B2B" }}
+                        style={{ textShadow: "0 1.12em 0 #1B3550" }}
                       >
                         {link.label}
                       </span>

@@ -74,7 +74,7 @@ export function Expertise() {
          {/* Header - Styled like Services section */}
          <div className="expertise-header-anim px-[5vw] mb-20 flex flex-col items-start gap-6">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9]">
-               Einsatzgebiete <span className="text-brand">.</span>
+               Einsatzgebiete <span className="text-[#7CB3D1]">.</span>
             </h2>
             <div className="max-w-xl">
                <p className="text-white/50 text-xl md:text-2xl font-light leading-relaxed">
@@ -83,35 +83,36 @@ export function Expertise() {
             </div>
          </div>
 
-         {/* Cards Slider/Grid */}
+         {/* Cards Grid */}
          <div className="px-[5vw] gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {AREAS.map((area) => (
                <div key={area.id} className="expertise-card group relative h-[450px] rounded-3xl overflow-hidden bg-black border border-white/10 cursor-pointer">
                   {/* Background gradient/overlay */}
                   <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/90 z-10" />
                   
-                  {/* Image */}
-                  <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700">
+                  {/* Image with Blue Tinting */}
+                  <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 z-0">
                      <Image 
                         src={area.image} 
                         alt={area.title} 
                         fill 
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                        className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 filter grayscale"
                      />
+                     <div className="absolute inset-0 bg-[#7CB3D1] mix-blend-color opacity-35 pointer-events-none" />
                   </div>
 
                   <div className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-md">
-                     <ArrowRight className="w-4 h-4 text-brand -rotate-45" />
+                     <ArrowRight className="w-4 h-4 text-[#7CB3D1] -rotate-45" />
                   </div>
 
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col justify-end h-full">
-                     <span className="font-mono text-brand text-xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">{area.id}</span>
+                     <span className="font-mono text-[#7CB3D1] text-xl mb-4 opacity-50 group-hover:opacity-100 transition-opacity">{area.id}</span>
                      <h3 className="text-2xl font-light mb-3">{area.title}</h3>
                      <p className="text-white/50 text-sm leading-relaxed opacity-100 md:opacity-0 md:group-hover:opacity-100 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-300">
                         {area.description}
-                     </p>
+                      </p>
                   </div>
                </div>
             ))}

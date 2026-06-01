@@ -7,11 +7,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import {
-  gsap,
-  registerScrollTrigger,
-  useGSAP,
-} from "@/hooks/useGSAP";
+import { gsap, registerScrollTrigger, useGSAP } from "@/hooks/useGSAP";
 import { siteConfig } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -51,7 +47,7 @@ export function Contact() {
     () => {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
-      
+
       const mm = gsap.matchMedia();
 
       // Desktop Animations
@@ -60,34 +56,46 @@ export function Contact() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 60%",
-          }
+          },
         });
 
         tl.from(".contact-title", {
           y: 100,
           opacity: 0,
           duration: 1.2,
-          ease: "power4.out"
+          ease: "power4.out",
         })
-        .from(".contact-left-block", {
-          x: -120,
-          opacity: 0,
-          duration: 1.6,
-          ease: "expo.out"
-        }, "-=0.8")
-        .from(".contact-right-block", {
-          x: 120,
-          opacity: 0,
-          duration: 1.6,
-          ease: "expo.out"
-        }, "-=1.4")
-        .from(".contact-inner", {
-          y: 30,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power3.out"
-        }, "-=1.0");
+          .from(
+            ".contact-left-block",
+            {
+              x: -120,
+              opacity: 0,
+              duration: 1.6,
+              ease: "expo.out",
+            },
+            "-=0.8",
+          )
+          .from(
+            ".contact-right-block",
+            {
+              x: 120,
+              opacity: 0,
+              duration: 1.6,
+              ease: "expo.out",
+            },
+            "-=1.4",
+          )
+          .from(
+            ".contact-inner",
+            {
+              y: 30,
+              opacity: 0,
+              duration: 1,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
+            "-=1.0",
+          );
       });
 
       // Mobile Animations
@@ -101,7 +109,7 @@ export function Contact() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 75%",
-          }
+          },
         });
       });
 
@@ -123,7 +131,8 @@ export function Contact() {
     }
   };
 
-  const inputClasses = "w-full bg-transparent border-b border-white/20 py-4 text-white placeholder:text-white/20 focus:border-brand focus:outline-none transition-colors font-display text-lg";
+  const inputClasses =
+    "w-full bg-transparent border-b border-white/20 py-4 text-white placeholder:text-white/20 focus:border-brand focus:outline-none transition-colors font-display text-lg";
   const labelClasses = "block text-white/40 text-sm font-display mb-1";
 
   return (
@@ -145,7 +154,7 @@ export function Contact() {
           <div className="contact-left-block contact-mobile-reveal relative flex flex-col justify-between py-12 px-8 lg:p-12 overflow-hidden rounded-[32px] border border-white/10 shadow-2xl">
             {/* Background Image */}
             <Image
-              src="/images/contact/contact.jpeg"
+              src="/images/contact/contact2.png"
               alt="Security Guards"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -158,36 +167,8 @@ export function Contact() {
             <div className="relative z-10 space-y-12">
               <div className="contact-inner contact-mobile-reveal">
                 <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight max-w-md italic font-light opacity-90">
-                  Lassen Sie uns gemeinsam das nächste Level Ihrer Sicherheit erreichen.
-                </p>
-                <div className="mt-8 font-display text-3xl md:text-4xl text-white hover:text-brand transition-colors cursor-pointer inline-block">
-                  Schreiben Sie uns.
-                </div>
-              </div>
-
-              <div className="contact-inner contact-mobile-reveal space-y-2">
-                <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">Social Media</p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2 font-display text-sm uppercase tracking-wider">
-                  <a href="#" className="hover:text-brand transition-colors">Instagram</a>
-                  <span className="text-white/20">—</span>
-                  <a href="#" className="hover:text-brand transition-colors">LinkedIn</a>
-                  <span className="text-white/20">—</span>
-                  <a href="#" className="hover:text-brand transition-colors">Facebook</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative z-10 contact-inner contact-mobile-reveal mt-24 lg:mt-0 grid grid-cols-2 gap-10">
-              <div className="space-y-4">
-                <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">In Kontakt treten</p>
-                <a href={`mailto:${siteConfig.email}`} className="block font-display text-sm md:text-base hover:text-brand transition-colors lowercase">
-                  {siteConfig.email}
-                </a>
-              </div>
-              <div className="space-y-4">
-                <p className="text-white/30 text-xs uppercase tracking-[0.2em] font-display">Standort</p>
-                <p className="font-display text-sm md:text-base leading-relaxed opacity-80">
-                  Dresden — Deutschland
+                  Lassen Sie uns gemeinsam das nächste Level Ihrer Sicherheit
+                  erreichen.
                 </p>
               </div>
             </div>
@@ -243,14 +224,25 @@ export function Contact() {
                   className={cn(inputClasses, "appearance-none bg-black")}
                 >
                   <option>Objektschutz</option>
-                  <option>Personenschutz</option>
+                  <option>Baustellenbewachung</option>
                   <option>Eventsicherheit</option>
                   <option>Sonstiges</option>
                 </select>
                 <div className="absolute right-0 bottom-4 pointer-events-none">
-                   <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1L6 6L11 1" stroke="white" strokeOpacity="0.4" strokeWidth="1.5"/>
-                   </svg>
+                  <svg
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L6 6L11 1"
+                      stroke="white"
+                      strokeOpacity="0.4"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
                 </div>
               </div>
 
@@ -259,7 +251,10 @@ export function Contact() {
                 <textarea
                   rows={1}
                   {...register("message")}
-                  className={cn(inputClasses, "resize-none h-auto min-h-[60px] pb-2")}
+                  className={cn(
+                    inputClasses,
+                    "resize-none h-auto min-h-[60px] pb-2",
+                  )}
                 />
               </div>
 
@@ -269,13 +264,15 @@ export function Contact() {
                   disabled={isSubmitting}
                   className="group flex items-end gap-x-4 transition-transform active:scale-95 cursor-pointer"
                 >
-                  <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none group-hover:text-brand transition-colors">
+                  <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none group-hover:text-[#7CB3D1] transition-colors">
                     {isSubmitting ? "BITTE WARTEN" : "SENDEN"}
                   </span>
-                  <div className={cn(
-                    "mb-2 p-3 sm:p-5 rounded-full border border-white/20 group-hover:bg-white group-hover:border-white transition-all duration-500",
-                    isSubmitting && "animate-pulse"
-                  )}>
+                  <div
+                    className={cn(
+                      "mb-2 p-3 sm:p-5 rounded-full border border-white/20 group-hover:bg-white group-hover:border-white transition-all duration-500",
+                      isSubmitting && "animate-pulse",
+                    )}
+                  >
                     <ArrowRight className="w-8 h-8 sm:w-12 sm:h-12 text-white group-hover:text-black transition-all duration-500 group-hover:-rotate-45" />
                   </div>
                 </button>

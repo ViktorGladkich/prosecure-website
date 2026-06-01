@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import { ChevronRight, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useGSAP, gsap } from "@/hooks/useGSAP";
+import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
 import { CustomEase } from "gsap/CustomEase";
 import { MenuPanel } from "./MenuPanel";
 
@@ -23,8 +23,8 @@ const GLASS_BTN: React.CSSProperties = {
 };
 
 const BRAND_BTN: React.CSSProperties = {
-  background: "linear-gradient(135deg, rgba(255,75,43,0.9) 0%, rgba(255,120,50,0.85) 50%, rgba(255,75,43,0.95) 100%)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(255,75,43,0.4)",
+  background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
   border: "1px solid rgba(255,255,255,0.2)",
 };
 
@@ -45,7 +45,7 @@ export function Navigation() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 250);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -53,8 +53,28 @@ export function Navigation() {
 
   useGSAP(() => {
     if (typeof window === "undefined") return;
+    registerScrollTrigger();
+
     gsap.set(".nav-animate-down", { y: -80, opacity: 0 });
-    gsap.to(".nav-animate-down", { y: 0, opacity: 1, duration: 1.2, delay: 6.8, ease: "power3.out" });
+    gsap.to(".nav-animate-down", { y: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: "power3.out" });
+
+    // Logo Animation - Starts in center of Hero and moves to header
+    const startY = window.innerHeight * 0.35;
+    gsap.set(".nav-logo-image", {
+      y: startY,
+      scale: 3,
+    });
+
+    gsap.to(".nav-logo-image", {
+      y: 0,
+      scale: 1,
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: 300,
+        scrub: 0.6,
+      }
+    });
   }, { scope: navRef });
 
   const openNav = useCallback(() => {
@@ -128,7 +148,7 @@ export function Navigation() {
       <nav
         ref={navRef}
         data-scrolled={scrolled ? "true" : "false"}
-        className={cn("fixed top-0 left-0 right-0 z-50 transition-[padding] duration-500", scrolled ? "py-4" : "py-6")}
+        className="fixed top-0 left-0 right-0 z-50"
       >
         <div
           aria-hidden="true"
@@ -161,16 +181,14 @@ export function Navigation() {
 
           <Link
             href="#hero"
-            className={cn(
-              "flex justify-center items-baseline flex-1 shrink-0 font-display text-xl md:text-2xl tracking-tight text-white select-none transition-all duration-500 ease-out",
-              scrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"
-            )}
+            className="flex justify-center items-center flex-1 shrink-0"
           >
-            prosecure<span className="text-brand ml-0.5">.</span>
+            <img src="/logo/logo.png" alt="ProSecure" className="nav-logo-image h-20 w-auto object-contain" />
           </Link>
 
           <div className="flex items-center justify-end gap-3 flex-1">
             <button
+              onClick={handleNavLink("#contact")}
               className="group hidden md:flex items-center gap-2.5 px-5 py-2.5 rounded-full overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
               style={GLASS_BTN}
             >

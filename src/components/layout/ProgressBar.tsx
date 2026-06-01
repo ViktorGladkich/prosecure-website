@@ -14,7 +14,7 @@ export function ProgressBar() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-linear-to-r from-brand via-[#ff6a4d] to-brand origin-left z-100 pointer-events-none shadow-[0_0_10px_rgba(255,75,43,0.4)]"
+      className="fixed top-0 left-0 right-0 h-[3px] bg-linear-to-r from-[#0F2740] via-[#1B3550] to-[#0F2740] origin-left z-100 pointer-events-none shadow-[0_0_10px_rgba(27,53,80,0.4)]"
       style={{ scaleX }}
     />
   );

@@ -80,7 +80,7 @@ export function About() {
         {/* Header - Styled like Services section */}
         <div className="mb-20">
           <h2 className="about-header-anim text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9]">
-             Über uns <span className="text-[#FF4B2B]">.</span>
+             Über uns <span className="text-[#7CB3D1]">.</span>
           </h2>
         </div>
 
@@ -125,7 +125,7 @@ export function About() {
                 
                 <div className="relative z-10">
                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand shadow-[0_0_15px_rgba(255,75,43,0.2)]">
+                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#7CB3D1] shadow-[0_0_15px_rgba(27,53,80,0.2)]">
                          <Target size={20} />
                       </div>
                       <h4 className="font-display text-2xl text-white font-medium uppercase tracking-wider">Präzision</h4>
@@ -157,7 +157,7 @@ export function About() {
 
                 <div className="relative z-10">
                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand shadow-[0_0_15px_rgba(255,75,43,0.2)]">
+                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#7CB3D1] shadow-[0_0_15px_rgba(27,53,80,0.2)]">
                          <ShieldCheck size={20} />
                       </div>
                       <h4 className="font-display text-2xl text-white font-medium uppercase tracking-wider">Diskretion</h4>
@@ -189,7 +189,7 @@ export function About() {
 
                 <div className="relative z-10">
                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-brand shadow-[0_0_15px_rgba(var(--brand-rgb),0.2)]">
+                      <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#7CB3D1] shadow-[0_0_15px_rgba(27,53,80,0.2)]">
                          <Award size={20} />
                       </div>
                       <h4 className="font-display text-2xl text-white font-medium uppercase tracking-wider">Expertise</h4>

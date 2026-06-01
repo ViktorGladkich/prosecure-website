@@ -9,23 +9,27 @@ import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
 
 const SERVICES = [
   {
-    title: "Personenschutz",
-    category: "VIP & Executive Protection",
-    img: "/images/personenschutz.jpeg",
+    title: "Baustellenbewachung",
+    category: "Areal- & Sachschutz",
+    description: "Lückenloser Schutz Ihrer Bauprojekte. Schutz vor Vandalismus, Sabotage und Diebstahl von Maschinen oder Materialien durch modernste Überwachung und regelmäßige Streifen.",
+    img: "/images/baustellenbewachung.png",
   },
   {
     title: "Objektschutz",
     category: "Werkschutz & Revierdienst",
+    description: "Zuverlässige Bewachung von Industrieanlagen, Bürokomplexen und Wohnobjekten. Schutz vor unbefugtem Zutritt, Gefahren und Diebstahl durch geschultes Pförtner- und Wachpersonal.",
     img: "/images/objektschutz.jpeg",
   },
   {
     title: "Alarmaufschaltung",
     category: "24/7 Monitoring Center",
+    description: "Rund-um-die-Uhr-Sicherheit durch unsere Notruf- und Serviceleitstelle. Sofortige Alarmverfolgung, schnelle Verifikation und direkte Einleitung von Interventionsmaßnahmen.",
     img: "/images/alarmaufschaltung.jpeg",
   },
   {
     title: "Anlassbezogene Sicherheit",
     category: "Event Security & Logistik",
+    description: "Professioneller Veranstaltungsschutz, Brandwachen und Absicherung temporärer Gefahrenbereiche. Flexibler Schutz für Corporate-Events, Messen und private Anlässe.",
     img: "/images/veranstaltungsschutz.png",
   },
 ];
@@ -92,7 +96,7 @@ export function Services() {
     <section id="services" ref={sectionRef} className="w-full flex flex-col bg-black py-20">
       <div className="px-[5vw] mb-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
          <h2 className="services-header-anim text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white">
-            Unsere<br />Dienstleistungen <span className="text-brand">.</span>
+            Unsere<br />Dienstleistungen <span className="text-[#7CB3D1]">.</span>
          </h2>
          <div className="services-badge-anim">
             <RotatingBadge />
@@ -112,6 +116,7 @@ export function Services() {
 interface ServiceItemType {
   title: string;
   category: string;
+  description: string;
   img: string;
 }
 
@@ -124,10 +129,10 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="absolute inset-0 bg-brand scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></div>
+      <div className="absolute inset-0 bg-[#7CB3D1] scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></div>
 
       <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between pointer-events-none gap-8 lg:gap-12">
-        <div className="flex flex-col z-20 min-w-[30%]">
+        <div className="flex flex-col z-20 min-w-[30%] max-w-xl">
           <span className="font-mono text-xs md:text-sm text-white/50 group-hover:text-black/50 transition-colors uppercase tracking-widest mb-4">
             0{index + 1} / {item.category}
           </span>
@@ -139,10 +144,18 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
           >
             {item.title}
           </motion.h3>
+          <motion.p
+            initial={{ x: 0 }}
+            animate={{ x: isHovered ? 20 : 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="font-sans text-sm md:text-base text-white/50 group-hover:text-black/60 transition-colors mt-6 leading-relaxed max-w-lg font-light"
+          >
+            {item.description}
+          </motion.p>
         </div>
 
         {/* Reveal Image - Mobile: Always Visible | Desktop: Hover Reveal */}
-        <div className="relative z-20 w-full lg:w-[35vh] h-[20vh] lg:h-[22vh] rounded-xl overflow-hidden order-2 lg:order-0">
+        <div className="relative z-20 w-full lg:w-[35vh] h-[20vh] lg:h-[22vh] rounded-xl overflow-hidden">
           {/* Mobile version (static) */}
           <div className="lg:hidden w-full h-full relative border border-white/10 rounded-xl overflow-hidden">
             <Image
@@ -174,15 +187,6 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
             />
           </motion.div>
         </div>
-
-        {/* Icon - Hidden on mobile */}
-        <div className="z-20 ml-auto lg:ml-0 hidden lg:block">
-          <Magnetic strength={30}>
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-full border border-white/20 group-hover:border-transparent flex items-center justify-center group-hover:bg-black transition-all duration-500 backdrop-blur-md">
-              <ArrowUpRight className="text-white w-8 h-8 md:w-12 md:h-12" />
-            </div>
-          </Magnetic>
-        </div>
       </div>
     </div>
   );
@@ -204,7 +208,7 @@ function RotatingBadge() {
           />
           <text className="text-[7.5px] uppercase font-display font-bold tracking-[0.25em] fill-white/30">
             <textPath xlinkHref="#textPath">
-              PROSECURE SECURITY SOLUTIONS • PREMIUM PROTECTION • TRUSTED SECURITY • 
+              PROSECURE SECURITY SOLUTIONS • EXPERT PROTECTION • TRUSTED SECURITY • 
             </textPath>
           </text>
         </svg>
@@ -219,7 +223,7 @@ function RotatingBadge() {
       >
         {/* Top shine */}
         <span className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%)" }} />
-        <Shield className="w-8 h-8 md:w-11 md:h-11 text-brand" strokeWidth={1.2} />
+        <Shield className="w-8 h-8 md:w-11 md:h-11 text-[#7CB3D1]" strokeWidth={1.2} />
       </div>
     </div>
   );

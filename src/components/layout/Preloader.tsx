@@ -216,7 +216,7 @@ export function Preloader() {
           <span className="text-brand">©</span> {new Date().getFullYear()} ProSecure<span className="text-brand">.</span>
         </div>
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#201d1d]">
-          Premium Security Solutions / Dresden
+          Professional Security Solutions / Dresden
         </div>
       </div>
     </div>

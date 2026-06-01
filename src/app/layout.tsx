@@ -8,7 +8,6 @@ export const viewport: Viewport = {
 import { Toaster } from "sonner";
 import "./globals.css";
 import { LenisProvider } from "@/components/layout/LenisProvider";
-import { Preloader } from "@/components/layout/Preloader";
 import { Navigation } from "@/components/layout/Navigation";
 import { ProgressBar } from "@/components/layout/ProgressBar";
 import { buildMetadata } from "@/lib/seo";
@@ -43,7 +42,6 @@ export default function RootLayout({
       <body className="font-body bg-ink text-bone antialiased">
         <LenisProvider>
           <ProgressBar />
-          <Preloader />
           <Navigation />
           {children}
           <Toaster

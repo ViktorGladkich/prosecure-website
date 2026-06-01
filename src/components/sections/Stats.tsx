@@ -8,15 +8,15 @@ const MAIN_TEXT = "Wir sind eine diskrete Sicherheitsagentur mit absoluter Leide
 const IMPORTANT_WORDS = new Set(["diskrete", "Sicherheitsagentur", "Leidenschaft", "Schutz,", "Sicherheit"]);
 
 const COUNTERS = [
-  { selector: ".counter-5",   from: 0, to: 5,   suffix: "+" },
-  { selector: ".counter-100", from: 0, to: 100, suffix: "%" },
+  { selector: ".counter-17",  from: 0, to: 17,  suffix: "+" },
+  { selector: ".counter-23",  from: 0, to: 23,  suffix: "+" },
   { selector: ".counter-24",  from: 0, to: 24,  suffix: "/7" },
 ];
 
 const STATS = [
-  { cls: "counter-5",   label: "Jahre Erfahrung" },
-  { cls: "counter-100", label: "Diskretion" },
-  { cls: "counter-24",  label: "Einsatzbereit" },
+  { cls: "counter-17",  label: "Mitarbeiter", value: "17+" },
+  { cls: "counter-23",  label: "Aktive Kunden", value: "23+" },
+  { cls: "counter-24",  label: "Einsatzbereit", value: "24/7" },
 ];
 
 const ICON_CARDS = [
@@ -26,9 +26,9 @@ const ICON_CARDS = [
     stroke: "white", size: 36, col: 1,
   },
   {
-    wrapperStyle: { background: "linear-gradient(135deg,rgba(255,75,43,0.15) 0%,rgba(255,75,43,0.05) 100%)", border: "1px solid rgba(255,75,43,0.2)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.08) inset" },
+    wrapperStyle: { background: "linear-gradient(135deg,rgba(15,39,64,0.15) 0%,rgba(27,53,80,0.05) 100%)", border: "1px solid rgba(27,53,80,0.2)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.08) inset" },
     svg: <><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></>,
-    stroke: "#FF4B2B", size: 30, col: 1,
+    stroke: "#7CB3D1", size: 30, col: 1,
   },
   {
     wrapperStyle: { background: "linear-gradient(180deg,rgba(255,255,255,0.07) 0%,rgba(255,255,255,0.02) 100%)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.1) inset" },
@@ -41,9 +41,9 @@ const ICON_CARDS = [
     stroke: "white", size: 30, col: 2,
   },
   {
-    wrapperStyle: { background: "linear-gradient(135deg,rgba(255,75,43,0.15) 0%,rgba(255,75,43,0.05) 100%)", border: "1px solid rgba(255,75,43,0.2)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.08) inset" },
+    wrapperStyle: { background: "linear-gradient(135deg,rgba(15,39,64,0.15) 0%,rgba(27,53,80,0.05) 100%)", border: "1px solid rgba(27,53,80,0.2)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.08) inset" },
     svg: <><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></>,
-    stroke: "#FF4B2B", size: 32, col: 3,
+    stroke: "#7CB3D1", size: 32, col: 3,
   },
 ];
 
@@ -78,7 +78,7 @@ export function Stats() {
 
       gsap.utils.toArray<HTMLElement>(".reveal-word").forEach((el) => {
         gsap.to(el, {
-          color: el.getAttribute("data-important") === "true" ? "#ff4b2b" : "#ffffff",
+          color: el.getAttribute("data-important") === "true" ? "#7CB3D1" : "#ffffff",
           scrollTrigger: { trigger: el, start: "top 85%", end: "top 70%", scrub: true },
         });
       });
@@ -92,7 +92,7 @@ export function Stats() {
           duration: 2,
           ease: "power2.out",
           onUpdate: () => { el.textContent = `${Math.round(obj.val)}${suffix}`; },
-          scrollTrigger: { trigger: el, start: "top 85%", once: true },
+          scrollTrigger: { trigger: el, start: "top 95%", once: true },
         });
       });
 
@@ -137,27 +137,6 @@ export function Stats() {
                   Einsatzbereit in Dresden und im gesamten DACH-Raum
                 </p>
               </div>
-
-              <div className="flex gap-3">
-                <button
-                  className="w-[42px] h-[42px] rounded-full flex items-center justify-center text-white hover:scale-105 transition-transform cursor-pointer"
-                  style={{ background: "linear-gradient(135deg, rgba(255,75,43,0.9) 0%, rgba(255,120,50,0.85) 100%)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 4px 12px rgba(255,75,43,0.3)", border: "1px solid rgba(255,255,255,0.2)" }}
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18.244 2.25H21.552L14.325 10.51L22.827 21.75H16.17L10.956 14.933L4.99 21.75H1.68L9.41 12.915L1.254 2.25H8.08L12.793 8.481L18.244 2.25ZM17.083 19.77H18.916L7.083 4.126H5.117L17.083 19.77Z" fill="currentColor"/></svg>
-                </button>
-                {[
-                  { d: <><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></>, size: 16 },
-                  { d: <><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></>, size: 16 },
-                ].map((icon, i) => (
-                  <button
-                    key={i}
-                    className="w-[42px] h-[42px] rounded-full flex items-center justify-center text-white/70 hover:text-white transition-colors cursor-pointer"
-                    style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%)", boxShadow: "0 1px 0 0 rgba(255,255,255,0.12) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset", border: "1px solid rgba(255,255,255,0.1)" }}
-                  >
-                    <svg width={icon.size} height={icon.size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{icon.d}</svg>
-                  </button>
-                ))}
-              </div>
             </div>
 
             <div className="flex-1 max-w-4xl lg:text-right">
@@ -172,11 +151,11 @@ export function Stats() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 mt-12 md:mt-24">
-            {STATS.map(({ cls, label }) => (
+            {STATS.map(({ cls, label, value }) => (
               <div key={cls} className="flex flex-col border-b border-brand/60 pb-6">
-                <h4 className={`${cls} font-mono text-[64px] md:text-[80px] leading-none mb-6 text-white tracking-tighter`} style={{ textShadow: "0 0 20px rgba(255,255,255,0.1)" }}>0</h4>
+                <h4 className={`${cls} font-mono text-[64px] md:text-[80px] leading-none mb-6 text-white tracking-tighter`} style={{ textShadow: "0 0 20px rgba(255,255,255,0.1)" }}>{value}</h4>
                 <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_#FF4B2B]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#7CB3D1] shadow-[0_0_8px_#7CB3D1]" />
                   <span className="text-[#a0a0a0] text-sm">{label}</span>
                 </div>
               </div>
@@ -187,11 +166,10 @@ export function Stats() {
         <div className="mt-32 flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32 w-full">
           <div className="footer-stat-anim flex flex-col items-center md:items-end relative">
             <div className="flex items-baseline gap-4">
-              <span className="text-5xl md:text-8xl font-display font-light text-white tracking-tight">Über</span>
-              <span className="text-6xl md:text-9xl font-mono font-bold text-brand tracking-tight leading-none">5</span>
+              <span className="text-5xl md:text-8xl font-display font-light text-white tracking-tight">Vertrauen</span>
             </div>
-            <span className="text-5xl md:text-8xl font-display font-light text-white tracking-tight -translate-y-2 md:-translate-y-4">Jahre</span>
-            <p className="text-white/40 text-[10px] md:text-xs tracking-[0.2em] uppercase mt-2">Diskreter Schutz seit 2019</p>
+            <span className="text-5xl md:text-8xl font-display font-light text-white tracking-tight -translate-y-2 md:-translate-y-4">in Sicherheit</span>
+            <p className="text-white/40 text-[10px] md:text-xs tracking-[0.2em] uppercase mt-2">Sicherheitsdienst Bad Gottleuba</p>
             <div className="hidden md:block absolute -right-16 top-1/2 -translate-y-1/2 h-[120%] w-[2px] bg-linear-to-b from-transparent via-white/30 to-transparent" />
           </div>
 

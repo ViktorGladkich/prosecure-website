@@ -63,7 +63,7 @@ export function localBusinessSchema(): Record<string, unknown> {
       { "@type": "City", name: "Dresden" },
       { "@type": "State", name: "Sachsen" },
     ],
-    sameAs: [siteConfig.social.linkedin, siteConfig.social.xing],
+    sameAs: [],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Sicherheitsdienstleistungen",
