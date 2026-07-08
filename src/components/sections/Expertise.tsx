@@ -100,7 +100,7 @@ export function Expertise() {
 
         {/* Cards Grid */}
         <div className="px-[5vw] gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {AREAS.map((area) => (
+          {AREAS.map((area, index) => (
             <div
               key={area.id}
               className="expertise-card group relative h-[450px] rounded-3xl overflow-hidden bg-black border border-white/10 cursor-pointer"
@@ -115,6 +115,7 @@ export function Expertise() {
                   alt={area.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  priority={index === 0}
                   className="object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                 />
               </div>

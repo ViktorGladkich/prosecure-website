@@ -103,7 +103,7 @@ export function Hero() {
           <div className="flex flex-col gap-7 w-full md:max-w-2xl mix-blend-plus-lighter animate-up">
             {/* Headline */}
             <div
-              className="font-display font-light leading-none tracking-tight text-white"
+              className="hero-title-mask font-display font-light leading-none tracking-tight text-white"
               style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.5rem)" }}
             >
               <span className="block">Ihr Schutz.</span>
