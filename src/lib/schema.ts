@@ -25,11 +25,6 @@ export function localBusinessSchema(): Record<string, unknown> {
       description:
         "Diskreter Personenschutz durch zertifizierte Fachkräfte für Executives und Privatpersonen.",
     },
-    {
-      name: "Alarmaufschaltung",
-      description:
-        "24/7-Notrufleitstelle mit Interventionsdienst und zertifizierter Alarmverfolgung.",
-    },
   ];
 
   return {

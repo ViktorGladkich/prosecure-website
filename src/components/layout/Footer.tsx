@@ -52,7 +52,7 @@ export function Footer() {
       {/* Top Grid Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 border-brand/30">
         {/* Contact Column */}
-        <div className="p-8 md:p-12 lg:p-16 border border-brand/30 md:border-y-0 md:border-l-0 md:border-r border-brand/30 flex flex-col justify-between">
+        <div className="p-8 md:p-12 lg:p-16 border border-brand/30 md:border-y-0 md:border-l-0 md:border-r flex flex-col justify-between">
           <div>
             <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Kontakt</h3>
             <div className="space-y-6">
@@ -91,13 +91,13 @@ export function Footer() {
       <div className="px-4 lg:px-10 overflow-hidden select-none">
         <div
           ref={logoRef}
-          className="font-display font-black text-center tracking-[-0.06em] leading-none text-white sm:text-white"
+          className="font-display font-black text-center leading-none text-white sm:text-white"
           style={{
-            fontSize: "clamp(4rem, 16.5vw, 20rem)",
-            letterSpacing: "-0.05em"
+            fontSize: "clamp(2.5rem, 13.5vw, 24rem)",
+            letterSpacing: "0.02em"
           }}
         >
-          PROSECURE<span className="text-brand">.</span>
+          PROSECURE
         </div>
       </div>
 

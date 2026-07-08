@@ -10,7 +10,7 @@ import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <main className="relative bg-ink text-bone">
+    <main className="relative bg-ink text-bone overflow-x-clip">
       <Hero />
       <Stats />
       <Services />

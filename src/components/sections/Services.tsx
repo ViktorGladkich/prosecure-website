@@ -20,12 +20,7 @@ const SERVICES = [
     description: "Zuverlässige Bewachung von Industrieanlagen, Bürokomplexen und Wohnobjekten. Schutz vor unbefugtem Zutritt, Gefahren und Diebstahl durch geschultes Pförtner- und Wachpersonal.",
     img: "/images/objektschutz.jpeg",
   },
-  {
-    title: "Alarmaufschaltung",
-    category: "24/7 Monitoring Center",
-    description: "Rund-um-die-Uhr-Sicherheit durch unsere Notruf- und Serviceleitstelle. Sofortige Alarmverfolgung, schnelle Verifikation und direkte Einleitung von Interventionsmaßnahmen.",
-    img: "/images/alarmaufschaltung.jpeg",
-  },
+
   {
     title: "Anlassbezogene Sicherheit",
     category: "Event Security & Logistik",
@@ -95,10 +90,10 @@ export function Services() {
   return (
     <section id="services" ref={sectionRef} className="w-full flex flex-col bg-black py-20">
       <div className="px-[5vw] mb-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
-         <h2 className="services-header-anim text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white">
-            Unsere<br />Dienstleistungen <span className="text-[#7CB3D1]">.</span>
+         <h2 className="services-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white break-words hyphens-auto">
+            Unsere<br />Dienstleistungen
          </h2>
-         <div className="services-badge-anim">
+         <div className="services-badge-anim hidden md:block">
             <RotatingBadge />
          </div>
       </div>
@@ -140,7 +135,7 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
             initial={{ x: 0 }}
             animate={{ x: isHovered ? 20 : 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="font-display text-[8vw] md:text-[5vw] font-light uppercase text-white group-hover:text-black transition-colors leading-[0.85] tracking-tighter"
+            className="font-display text-[7.5vw] md:text-[5vw] font-light uppercase text-white group-hover:text-black transition-colors leading-[0.85] tracking-tighter break-words hyphens-auto w-full"
           >
             {item.title}
           </motion.h3>

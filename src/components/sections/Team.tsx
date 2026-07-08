@@ -5,20 +5,19 @@ import Image from "next/image";
 import gsap from "gsap";
 
 const TEAM_IMAGES = [
-  { src: "/images/team/team-action-1.png",    speed: 0.7,  grid: "1/2/8/9",     mobileGrid: "1/2/10/10" },
-  { src: "/images/team/team-action-2.png",    speed: 0.85, grid: "5/12/11/19",   mobileGrid: "8/10/16/19" },
-  { src: "/images/team/team-portrait-1.jpeg", speed: 1.15, grid: "14/6/20/15",  mobileGrid: "18/3/27/12" },
-  { src: "/images/team/team-portrait-2.jpeg", speed: 0.9,  grid: "22/1/28/8",    mobileGrid: "28/9/37/18" },
-  { src: "/images/team/team-portrait-3.jpeg", speed: 1.05, grid: "26/13/32/20", mobileGrid: "38/2/47/11" },
-  { src: "/images/team/team-portrait-4.jpeg", speed: 0.8,  grid: "35/3/42/10",   mobileGrid: "48/10/57/19" },
-  { src: "/images/team/team-portrait-5.png",  speed: 1.1,  grid: "40/12/47/20",  mobileGrid: "58/3/67/12" },
-  { src: "/images/team/team-profile-1.jpeg",  speed: 0.95, grid: "50/7/57/16",   mobileGrid: "68/8/77/17" },
+  { src: "/images/team/team-action-1.png",    speed: 0.7,  grid: "1/2/8/9",     mobileGrid: "1/2/9/16" },
+  { src: "/images/team/team-action-2.png",    speed: 0.85, grid: "5/12/11/19",   mobileGrid: "12/5/20/19" },
+  { src: "/images/team/team-portrait-1.jpeg", speed: 1.15, grid: "14/6/20/15",  mobileGrid: "23/2/31/16" },
+  { src: "/images/team/team-portrait-2.jpeg", speed: 0.9,  grid: "22/1/28/8",    mobileGrid: "34/5/42/19" },
+  { src: "/images/team/team-portrait-3.jpeg", speed: 1.05, grid: "26/13/32/20", mobileGrid: "45/2/53/16" },
+  { src: "/images/team/team-portrait-4.jpeg", speed: 0.8,  grid: "35/3/42/10",   mobileGrid: "56/5/64/19" },
+  { src: "/images/team/team-portrait-5.png",  speed: 1.1,  grid: "40/12/47/20",  mobileGrid: "67/2/75/16" },
+  { src: "/images/team/team-profile-1.jpeg",  speed: 0.95, grid: "50/7/57/16",   mobileGrid: "78/5/86/19" },
 ];
 
 const TITLE = (
   <>
-    PROSECURE TEAM{" "}
-    <span className="text-brand" style={{ WebkitTextStroke: "none" }}>.</span>
+    PROSECURE TEAM
   </>
 );
 
@@ -36,13 +35,12 @@ const titleStyle = (size: string): React.CSSProperties => ({
 export function Team() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Lazy init avoids synchronous setState in effect body
-  const [mobileMode, setMobileMode] = useState(() =>
-    typeof window !== "undefined" ? window.innerWidth < 768 : false
-  );
+  // Initialize to false to match server render and prevent hydration errors
+  const [mobileMode, setMobileMode] = useState(false);
 
   useEffect(() => {
     const check = () => setMobileMode(window.innerWidth < 768);
+    check(); // Call immediately on mount to update state for client
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);

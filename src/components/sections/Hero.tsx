@@ -13,10 +13,10 @@ export function Hero() {
       if (typeof window === "undefined") return;
       registerScrollTrigger();
 
-      // Start animations immediately (no preloader delay)
+
       const ENTRY_DELAY = 0.5;
 
-      // Big Title Entry (PROSECURE.) - Targeting the Mask
+
       gsap.fromTo(
         ".hero-title-mask",
         { y: 100, opacity: 0, scale: 0.8 },
@@ -30,7 +30,7 @@ export function Hero() {
         }
       );
 
-      // Entry animations for content
+
       gsap.fromTo(
         ".animate-up",
         { y: 50, opacity: 0 },
@@ -46,7 +46,7 @@ export function Hero() {
 
 
 
-      // Logo animation moved to Navigation.tsx
+
     },
     { scope: sectionRef }
   );
@@ -73,9 +73,7 @@ export function Hero() {
 
       {/* Main Container */}
       <div className="relative z-10 w-full px-4 md:px-12 flex flex-col pt-24 pb-8 mx-auto max-w-[1600px] h-full">
-        {/* Navigation is now globally handled by Layout/Navigation.tsx */}
 
-        {/* Logo is now handled by Navigation.tsx */}
 
         {/* Spacer to push content to bottom */}
         <div className="flex-1 min-h-[35vh] md:min-h-[10vh]" />
@@ -85,31 +83,7 @@ export function Hero() {
           
           {/* Left Stats Block */}
           <div className="flex flex-col gap-7 w-full md:max-w-2xl mix-blend-plus-lighter animate-up">
-            {/* Social proof pill — liquid glass */}
-            <div
-              className="relative flex items-center gap-2.5 px-3 py-1.5 rounded-full w-max overflow-hidden"
-              style={{
-                background: "linear-gradient(180deg, rgba(200,200,220,0.12) 0%, rgba(80,80,100,0.08) 100%)",
-                backdropFilter: "blur(20px) saturate(1.5)",
-                WebkitBackdropFilter: "blur(20px) saturate(1.5)",
-                boxShadow: "0 1px 0 0 rgba(255,255,255,0.18) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 4px 12px rgba(0,0,0,0.2)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              }}
-            >
-              {/* Top shine */}
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%)" }} />
-              <div className="relative z-10 flex -space-x-2">
-                {/* eslint-disable @next/next/no-img-element */}
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=1" alt="avatar" loading="lazy" decoding="async" /></div>
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=2" alt="avatar" loading="lazy" decoding="async" /></div>
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-white/20"><img src="https://i.pravatar.cc/100?img=3" alt="avatar" loading="lazy" decoding="async" /></div>
-                {/* eslint-enable @next/next/no-img-element */}
-              </div>
-              <div className="relative z-10 text-[10px] leading-tight flex flex-col ml-0.5">
-                <span className="font-bold text-white">Zufriedene Partnerschaften</span>
-                <span className="text-white/50">100% Vertrauensgarantie</span>
-              </div>
-            </div>
+
 
             {/* Headline */}
             <div className="font-display font-light leading-none tracking-tight text-white" style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.5rem)" }}>

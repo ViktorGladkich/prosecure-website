@@ -73,8 +73,8 @@ export function Expertise() {
       <div className="w-full">
          {/* Header - Styled like Services section */}
          <div className="expertise-header-anim px-[5vw] mb-20 flex flex-col items-start gap-6">
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9]">
-               Einsatzgebiete <span className="text-[#7CB3D1]">.</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9] break-words hyphens-auto">
+               Einsatzgebiete
             </h2>
             <div className="max-w-xl">
                <p className="text-white/50 text-xl md:text-2xl font-light leading-relaxed">

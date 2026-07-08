@@ -143,9 +143,9 @@ export function Contact() {
     >
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
         {/* Giant Title */}
-        <div className="contact-title contact-mobile-reveal mb-16 lg:mb-24 text-center w-full">
-          <h2 className="font-display font-black uppercase text-[7vw] sm:text-[8vw] lg:text-[8.5vw] leading-[0.85] tracking-[-0.05em] text-white">
-            KONTAKT AUFNEHMEN<span className="text-brand"> .</span>
+        <div className="contact-title contact-mobile-reveal mb-16 lg:mb-24 text-center w-full px-2">
+          <h2 className="font-display font-black uppercase text-[12vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] leading-[0.85] tracking-[-0.05em] text-white break-words hyphens-auto">
+            KONTAKT AUFNEHMEN
           </h2>
         </div>
 
@@ -262,19 +262,37 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group flex items-end gap-x-4 transition-transform active:scale-95 cursor-pointer"
+                  className={cn(
+                    "group relative flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]",
+                    isSubmitting && "opacity-80 pointer-events-none"
+                  )}
+                  style={{
+                    background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+                    boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 8px 24px -4px rgba(27,53,80,0.4), 0 2px 8px rgba(0,0,0,0.2)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                  }}
                 >
-                  <span className="font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase tracking-tighter leading-none group-hover:text-[#7CB3D1] transition-colors">
-                    {isSubmitting ? "BITTE WARTEN" : "SENDEN"}
+                  {/* Glass shine highlight */}
+                  <span
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{
+                      background: "linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+                      maskImage: "linear-gradient(180deg, black 0%, transparent 60%)",
+                      WebkitMaskImage: "linear-gradient(180deg, black 0%, transparent 60%)",
+                    }}
+                  />
+                  <span className="relative z-10 text-white text-base font-display uppercase tracking-wide">
+                    {isSubmitting ? "Bitte Warten..." : "Senden"}
                   </span>
-                  <div
-                    className={cn(
-                      "mb-2 p-3 sm:p-5 rounded-full border border-white/20 group-hover:bg-white group-hover:border-white transition-all duration-500",
-                      isSubmitting && "animate-pulse",
-                    )}
+                  <span
+                    className="relative z-10 flex items-center justify-center w-8 h-8 rounded-full group-hover:-rotate-45 transition-transform duration-500"
+                    style={{
+                      background: "black",
+                      boxShadow: "0 1px 0 0 rgba(255,255,255,0.3) inset",
+                    }}
                   >
-                    <ArrowRight className="w-8 h-8 sm:w-12 sm:h-12 text-white group-hover:text-black transition-all duration-500 group-hover:-rotate-45" />
-                  </div>
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </span>
                 </button>
               </div>
             </form>
