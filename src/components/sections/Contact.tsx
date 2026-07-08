@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { gsap, registerScrollTrigger, useGSAP } from "@/hooks/useGSAP";
-import { siteConfig } from "@/lib/seo";
+
 import { cn } from "@/lib/utils";
 
 const contactSchema = z.object({
@@ -19,6 +19,9 @@ const contactSchema = z.object({
   phone: z.string().optional(),
   budget: z.string().optional(),
   message: z.string().min(10, "Nachricht zu kurz"),
+  privacyPolicy: z.boolean().refine((val) => val === true, {
+    message: "Bitte stimmen Sie der Datenschutzerklärung zu",
+  }),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -43,6 +46,7 @@ export function Contact() {
       phone: "",
       budget: "Budget anfragen",
       message: "",
+      privacyPolicy: false,
     },
   });
 
@@ -179,7 +183,7 @@ export function Contact() {
       <div className="mx-auto w-full max-w-[1600px] px-6 lg:px-12">
         {/* Giant Title */}
         <div className="contact-title contact-mobile-reveal mb-16 lg:mb-24 text-center w-full px-2">
-          <h2 className="font-display font-black uppercase text-[12vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] leading-[0.85] tracking-[-0.05em] text-white break-words hyphens-auto">
+          <h2 className="font-display font-black uppercase text-[12vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] leading-[0.85] tracking-[-0.05em] text-white wrap-break-word hyphens-auto">
             KONTAKT AUFNEHMEN
           </h2>
         </div>
@@ -302,7 +306,24 @@ export function Contact() {
                 />
               </div>
 
-              <div className="md:col-span-2 pt-12 flex justify-end">
+              <div className="md:col-span-2 pt-4 flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  required
+                  {...register("privacyPolicy")}
+                  className="mt-1 shrink-0 w-4 h-4 rounded border-white/60 bg-transparent text-brand focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                />
+                <label htmlFor="privacy" className="text-sm text-white/50 leading-relaxed cursor-pointer select-none">
+                  Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen gespeichert werden. Weitere Informationen finden Sie in der{" "}
+                  <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#7CB3D1] underline underline-offset-2 transition-colors">
+                    Datenschutzerklärung
+                  </a>
+                  .
+                </label>
+              </div>
+
+              <div className="md:col-span-2 pt-6 flex justify-end">
                 <button
                   type="submit"
                   disabled={isSubmitting}

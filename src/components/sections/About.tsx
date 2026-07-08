@@ -78,7 +78,7 @@ export function About() {
       <div className="px-[5vw] max-w-[1700px] mx-auto">
         {/* Header - Styled like Services section */}
         <div className="mb-20">
-          <h2 className="about-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9] break-words hyphens-auto">
+          <h2 className="about-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9] wrap-break-word hyphens-auto">
             Über uns
           </h2>
         </div>

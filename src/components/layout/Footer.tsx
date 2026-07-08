@@ -125,9 +125,9 @@ export function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="w-full bg-transparent border-b border-brand/30 py-4 font-display text-lg focus:outline-none focus:border-brand transition-colors"
+              className="w-full bg-transparent border-b border-brand/30 py-4 pr-10 font-display text-lg focus:outline-none focus:border-brand transition-colors"
             />
-            <button type="submit" className="absolute right-0 bottom-4 hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
+            <button type="submit" className="absolute right-0 bottom-4 cursor-pointer hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
               <ArrowRight
                 size={20}
                 className="text-white/40 group-focus-within:text-[#7CB3D1] hover:text-[#7CB3D1]"

@@ -48,7 +48,7 @@ export function MenuPanel({
       <div
         ref={panelRef}
         aria-hidden={!isOpen}
-        className="fixed inset-y-0 left-0 z-[100] w-full max-w-md text-white shadow-[0_0_80px_rgba(0,0,0,0.8)]"
+        className="fixed inset-y-0 left-0 z-100 w-full max-w-md text-white shadow-[0_0_80px_rgba(0,0,0,0.8)]"
         style={{ display: "none" }}
       >
         <div
@@ -64,7 +64,7 @@ export function MenuPanel({
           style={{ backgroundColor: "#000000" }}
         />
 
-        <div className="relative z-[1] flex flex-col h-full">
+        <div className="relative z-1 flex flex-col h-full">
           <div className="flex h-24 items-center justify-between px-8 md:px-12 border-b border-white/5">
             <div className="flex items-baseline font-display text-2xl tracking-tight text-white select-none">
               prosecure<span className="text-[#7CB3D1] ml-0.5">.</span>
@@ -141,7 +141,7 @@ export function MenuPanel({
 
       <div
         ref={overlayRef}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[99]"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-99"
         onClick={closeNav}
         style={{ display: "none" }}
       />

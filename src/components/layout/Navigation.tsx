@@ -249,6 +249,7 @@ export function Navigation() {
             href="/"
             className="flex justify-center items-center flex-1 shrink-0"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo/logo.png"
               alt="ProSecure"

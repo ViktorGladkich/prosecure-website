@@ -3,6 +3,17 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Security: Helper function to escape HTML and prevent XSS injections
+const escapeHtml = (unsafe: string) => {
+  if (!unsafe) return "-";
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+};
+
 export async function POST(req: Request) {
   try {
     const { firstName, lastName, company, email, phone, budget, message } = await req.json();
@@ -20,17 +31,17 @@ export async function POST(req: Request) {
       // I will put a placeholder or standard 'onboarding@resend.dev' that works for testing.
       from: "ProSecure Website <onboarding@resend.dev>",
       to: [process.env.CONTACT_EMAIL || "info@prosecure.de"],
-      subject: `Neue Kontaktanfrage von ${firstName} ${lastName}`,
+      subject: `Neue Kontaktanfrage von ${escapeHtml(firstName)} ${escapeHtml(lastName)}`,
       html: `
         <h2>Neue Kontaktanfrage über die Website</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Unternehmen:</strong> ${company || "-"}</p>
-        <p><strong>E-Mail:</strong> ${email}</p>
-        <p><strong>Telefon:</strong> ${phone || "-"}</p>
-        <p><strong>Leistung:</strong> ${budget || "-"}</p>
+        <p><strong>Name:</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
+        <p><strong>Unternehmen:</strong> ${escapeHtml(company)}</p>
+        <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>
+        <p><strong>Leistung:</strong> ${escapeHtml(budget)}</p>
         <br />
         <p><strong>Nachricht:</strong></p>
-        <p>${message.replace(/\n/g, "<br />")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
       `,
     });
 
@@ -39,7 +50,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Interner Serverfehler." },
       { status: 500 }

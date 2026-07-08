@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
-import { ArrowRight } from "lucide-react";
+
 import Image from "next/image";
 
 const AREAS = [
@@ -87,7 +87,7 @@ export function Expertise() {
       <div className="w-full">
         {/* Header - Styled like Services section */}
         <div className="expertise-header-anim px-[5vw] mb-20 flex flex-col items-start gap-6">
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9] break-words hyphens-auto">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white leading-[0.9] wrap-break-word hyphens-auto">
             Einsatzgebiete
           </h2>
           <div className="max-w-xl">

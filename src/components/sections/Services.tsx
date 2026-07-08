@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Shield } from "lucide-react";
-import Magnetic from "@/components/dom/Magnetic";
+import { Shield } from "lucide-react";
+
 import Image from "next/image";
 import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
 
@@ -97,7 +97,7 @@ export function Services() {
       className="w-full flex flex-col bg-black py-20"
     >
       <div className="px-[5vw] mb-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
-        <h2 className="services-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white break-words hyphens-auto">
+        <h2 className="services-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white wrap-break-word hyphens-auto">
           Unsere
           <br />
           Dienstleistungen
@@ -144,7 +144,7 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
             initial={{ x: 0 }}
             animate={{ x: isHovered ? 20 : 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="font-display text-[7.5vw] md:text-[5vw] font-light uppercase text-white group-hover:text-black transition-colors leading-[0.85] tracking-tighter break-words hyphens-auto w-full"
+            className="font-display text-[7.5vw] md:text-[5vw] font-light uppercase text-white group-hover:text-black transition-colors leading-[0.85] tracking-tighter wrap-break-word hyphens-auto w-full"
           >
             {item.title}
           </motion.h3>
