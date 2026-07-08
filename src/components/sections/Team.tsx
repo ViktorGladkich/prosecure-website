@@ -23,12 +23,7 @@ const TEAM_IMAGES = [
     grid: "14/6/20/15",
     mobileGrid: "23/2/31/16",
   },
-  {
-    src: "/images/team/team-portrait-2.jpeg",
-    speed: 0.9,
-    grid: "22/1/28/8",
-    mobileGrid: "34/5/42/19",
-  },
+
   {
     src: "/images/team/team-portrait-3.jpeg",
     speed: 1.05,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -16,6 +16,7 @@ const contactSchema = z.object({
   lastName: z.string().min(2, "Nachname erforderlich"),
   company: z.string().optional(),
   email: z.string().email("Ungültige E-Mail"),
+  phone: z.string().optional(),
   budget: z.string().optional(),
   message: z.string().min(10, "Nachricht zu kurz"),
 });
@@ -30,6 +31,7 @@ export function Contact() {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -38,10 +40,29 @@ export function Contact() {
       lastName: "",
       company: "",
       email: "",
+      phone: "",
       budget: "Budget anfragen",
       message: "",
     },
   });
+
+  useEffect(() => {
+    const handlePrefill = (e: Event) => {
+      const customEvent = e as CustomEvent<{ email?: string }>;
+      if (customEvent.detail?.email) {
+        setValue("email", customEvent.detail.email);
+        
+        // Optionally focus the next field
+        setTimeout(() => {
+          const firstNameInput = document.querySelector('input[name="firstName"]') as HTMLInputElement;
+          if (firstNameInput) firstNameInput.focus();
+        }, 500); // Wait a bit for scroll to finish
+      }
+    };
+    
+    window.addEventListener("prefill-contact", handlePrefill);
+    return () => window.removeEventListener("prefill-contact", handlePrefill);
+  }, [setValue]);
 
   useGSAP(
     () => {
@@ -146,8 +167,8 @@ export function Contact() {
   };
 
   const inputClasses =
-    "w-full bg-transparent border-b border-white/20 py-4 text-white placeholder:text-white/20 focus:border-brand focus:outline-none transition-colors font-display text-lg";
-  const labelClasses = "block text-white/40 text-sm font-display mb-1";
+    "w-full bg-transparent border-b border-white/60 py-4 text-white placeholder:text-white/50 focus:border-brand focus:outline-none transition-colors font-display text-lg";
+  const labelClasses = "block text-white text-sm font-display mb-1";
 
   return (
     <section
@@ -214,7 +235,7 @@ export function Contact() {
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>Unternehmen</label>
+                <label className={labelClasses}>Unternehmen (Optional)</label>
                 <input
                   type="text"
                   {...register("company")}
@@ -227,6 +248,15 @@ export function Contact() {
                 <input
                   type="email"
                   {...register("email")}
+                  className={inputClasses}
+                />
+              </div>
+
+              <div className="relative">
+                <label className={labelClasses}>Telefon (Optional)</label>
+                <input
+                  type="tel"
+                  {...register("phone")}
                   className={inputClasses}
                 />
               </div>

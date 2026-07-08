@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { gsap, registerScrollTrigger, useGSAP } from "@/hooks/useGSAP";
@@ -9,6 +9,35 @@ import { siteConfig } from "@/lib/seo";
 export function Footer() {
   const footerRef = useRef<HTMLElement | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
+  const [email, setEmail] = useState("");
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    // Dispatch event for Contact form to catch
+    const event = new CustomEvent("prefill-contact", { detail: { email } });
+    window.dispatchEvent(event);
+    
+    // Scroll to contact section
+    const target = document.querySelector("#kontakt");
+    if (!target) return;
+    const lenis = (
+      window as Window & {
+        lenis?: {
+          scrollTo?: (
+            target: Element | string,
+            options?: { immediate?: boolean },
+          ) => void;
+        };
+      }
+    ).lenis;
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(target, { immediate: false });
+    } else {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useGSAP(
     () => {
@@ -90,19 +119,21 @@ export function Footer() {
           <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">
             Newsletter
           </h3>
-          <div className="relative group">
+          <form onSubmit={handleEmailSubmit} className="relative group">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               className="w-full bg-transparent border-b border-brand/30 py-4 font-display text-lg focus:outline-none focus:border-brand transition-colors"
             />
-            <button className="absolute right-0 bottom-4 hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
+            <button type="submit" className="absolute right-0 bottom-4 hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
               <ArrowRight
                 size={20}
                 className="text-white/40 group-focus-within:text-[#7CB3D1] hover:text-[#7CB3D1]"
               />
             </button>
-          </div>
+          </form>
         </div>
       </div>
 
@@ -112,8 +143,8 @@ export function Footer() {
           ref={logoRef}
           className="font-display font-black text-center leading-none text-white sm:text-white"
           style={{
-            fontSize: "clamp(3rem, 16vw, 28rem)",
-            letterSpacing: "0.06em",
+            fontSize: "clamp(3rem, 11.5vw, 24rem)",
+            letterSpacing: "0.02em",
           }}
         >
           PROSECURE

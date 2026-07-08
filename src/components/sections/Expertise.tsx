@@ -9,28 +9,28 @@ const AREAS = [
   {
     id: "01",
     title: "Corporate Security",
-    image: "/images/corporateSecurity.jpeg",
+    image: "/images/corporateSecurity.png",
     description:
       "Ganzheitliche Sicherheitskonzepte für Unternehmen, Vorstandskreise und kritische Infrastrukturen.",
   },
   {
     id: "02",
     title: "Private Protection",
-    image: "/images/privateProtection.jpeg",
+    image: "/images/privateProtection.png",
     description:
       "Diskreter Schutz für Familien, Residenzen und private Werttransporte im High-End Bereich.",
   },
   {
     id: "03",
     title: "Event Security",
-    image: "/images/eventSecurity.jpeg",
+    image: "/images/eventSecurity.png",
     description:
       "Sicherheitskoordination für exklusive Events, Hauptversammlungen und VIP-Veranstaltungen.",
   },
   {
     id: "04",
     title: "Revierdienst",
-    image: "/images/revierdienst.jpeg",
+    image: "/images/revierdienst.png",
     description:
       "Präventive Bestreifung von Objekten und sofortige Alarmverfolgung durch unsere mobilen Einsatzkräfte.",
   },
@@ -108,21 +108,18 @@ export function Expertise() {
               {/* Background gradient/overlay */}
               <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black/90 z-10" />
 
-              {/* Image with Blue Tinting */}
-              <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 z-0">
+              {/* 3D Icon */}
+              <div className="absolute inset-8 md:inset-12 group-hover:scale-110 transition-transform duration-700 z-0">
                 <Image
                   src={area.image}
                   alt={area.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500 filter grayscale"
+                  className="object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                 />
-                <div className="absolute inset-0 bg-[#7CB3D1] mix-blend-color opacity-35 pointer-events-none" />
               </div>
 
-              <div className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 backdrop-blur-md">
-                <ArrowRight className="w-4 h-4 text-[#7CB3D1] -rotate-45" />
-              </div>
+
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col justify-end h-full">

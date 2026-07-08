@@ -1,11 +1,40 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const [email, setEmail] = useState("");
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    // Dispatch event for Contact form to catch
+    const event = new CustomEvent("prefill-contact", { detail: { email } });
+    window.dispatchEvent(event);
+    
+    // Scroll to contact section
+    const target = document.querySelector("#kontakt");
+    if (!target) return;
+    const lenis = (
+      window as Window & {
+        lenis?: {
+          scrollTo?: (
+            target: Element | string,
+            options?: { immediate?: boolean },
+          ) => void;
+        };
+      }
+    ).lenis;
+    if (lenis?.scrollTo) {
+      lenis.scrollTo(target, { immediate: false });
+    } else {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useGSAP(
     () => {
@@ -219,7 +248,8 @@ export function Hero() {
               </p>
 
               {/* Email input — glass metal pill */}
-              <div
+              <form
+                onSubmit={handleEmailSubmit}
                 className="relative z-10 w-full h-[52px] flex items-center px-2 pr-[6px] rounded-full"
                 style={{
                   background:
@@ -233,6 +263,8 @@ export function Hero() {
               >
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Ihre E-Mail"
                   className="w-full bg-transparent border-none text-[13.5px] text-white placeholder:text-white/35 focus:outline-none focus:ring-0 ml-4 py-3"
                 />
@@ -248,7 +280,7 @@ export function Hero() {
                 >
                   <ArrowRight className="w-4 h-4 text-white" />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
