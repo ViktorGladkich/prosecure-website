@@ -4,12 +4,12 @@ import { motion, useScroll, useSpring } from "framer-motion";
 
 export function ProgressBar() {
   const { scrollYProgress } = useScroll();
-  
+
   // Create a spring animation for the scroll progress to make it smooth
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (

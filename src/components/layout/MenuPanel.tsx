@@ -3,36 +3,46 @@
 import { X, ChevronRight } from "lucide-react";
 
 const NAV_LINKS: Array<{ href: string; label: string }> = [
-  { href: "#hero",     label: "Home" },
-  { href: "#services", label: "Leistungen" },
-  { href: "#about",    label: "Über uns" },
-  { href: "#team",     label: "Team" },
-  { href: "#contact",  label: "Kontakt" },
+  { href: "#start", label: "Home" },
+  { href: "#leistungen", label: "Leistungen" },
+  { href: "#ueber-uns", label: "Über uns" },
+  { href: "#team", label: "Team" },
+  { href: "#kontakt", label: "Kontakt" },
 ];
 
 type Props = {
-  panelRef:    React.RefObject<HTMLDivElement | null>;
-  overlayRef:  React.RefObject<HTMLDivElement | null>;
-  isOpen:      boolean;
-  closeNav:    () => void;
+  panelRef: React.RefObject<HTMLDivElement | null>;
+  overlayRef: React.RefObject<HTMLDivElement | null>;
+  isOpen: boolean;
+  closeNav: () => void;
   handleNavLink: (href: string) => (e: React.MouseEvent) => void;
 };
 
 const closeButtonStyle: React.CSSProperties = {
-  background: "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(80,80,95,0.1) 100%)",
+  background:
+    "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(80,80,95,0.1) 100%)",
   backdropFilter: "blur(24px) saturate(1.5)",
   WebkitBackdropFilter: "blur(24px) saturate(1.5)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 4px 16px rgba(0,0,0,0.2)",
+  boxShadow:
+    "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 4px 16px rgba(0,0,0,0.2)",
   border: "1px solid rgba(255,255,255,0.1)",
 };
 
 const ctaStyle: React.CSSProperties = {
-  background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
+  background:
+    "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+  boxShadow:
+    "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
   border: "1px solid rgba(255,255,255,0.2)",
 };
 
-export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLink }: Props) {
+export function MenuPanel({
+  panelRef,
+  overlayRef,
+  isOpen,
+  closeNav,
+  handleNavLink,
+}: Props) {
   return (
     <>
       <div
@@ -41,9 +51,18 @@ export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLin
         className="fixed inset-y-0 left-0 z-[100] w-full max-w-md text-white shadow-[0_0_80px_rgba(0,0,0,0.8)]"
         style={{ display: "none" }}
       >
-        <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#1B3550" }} />
-        <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#FFFFFF" }} />
-        <div className="bg-panel absolute inset-0" style={{ backgroundColor: "#000000" }} />
+        <div
+          className="bg-panel absolute inset-0"
+          style={{ backgroundColor: "#1B3550" }}
+        />
+        <div
+          className="bg-panel absolute inset-0"
+          style={{ backgroundColor: "#FFFFFF" }}
+        />
+        <div
+          className="bg-panel absolute inset-0"
+          style={{ backgroundColor: "#000000" }}
+        />
 
         <div className="relative z-[1] flex flex-col h-full">
           <div className="flex h-24 items-center justify-between px-8 md:px-12 border-b border-white/5">
@@ -57,8 +76,17 @@ export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLin
               className="group relative flex h-12 w-12 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               style={closeButtonStyle}
             >
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)" }} />
-              <X size={20} className="relative z-10 text-brand group-hover:rotate-90 transition-all duration-500" />
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)",
+                }}
+              />
+              <X
+                size={20}
+                className="relative z-10 text-brand group-hover:rotate-90 transition-all duration-500"
+              />
             </button>
           </div>
 
@@ -90,13 +118,21 @@ export function MenuPanel({ panelRef, overlayRef, isOpen, closeNav, handleNavLin
 
           <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-black/40 backdrop-blur-md">
             <a
-              href="#contact"
-              onClick={handleNavLink("#contact")}
+              href="#kontakt"
+              onClick={handleNavLink("#kontakt")}
               className="group relative flex items-center justify-center w-full py-4 rounded-full overflow-hidden transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               style={ctaStyle}
             >
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
-              <span className="relative z-10 text-white text-sm font-display uppercase tracking-wider">Angebot anfordern</span>
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)",
+                }}
+              />
+              <span className="relative z-10 text-white text-sm font-display uppercase tracking-wider">
+                Angebot anfordern
+              </span>
               <ChevronRight className="relative z-10 ml-2 w-5 h-5 text-white/70 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

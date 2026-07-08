@@ -5,21 +5,57 @@ import Image from "next/image";
 import gsap from "gsap";
 
 const TEAM_IMAGES = [
-  { src: "/images/team/team-action-1.png",    speed: 0.7,  grid: "1/2/8/9",     mobileGrid: "1/2/9/16" },
-  { src: "/images/team/team-action-2.png",    speed: 0.85, grid: "5/12/11/19",   mobileGrid: "12/5/20/19" },
-  { src: "/images/team/team-portrait-1.jpeg", speed: 1.15, grid: "14/6/20/15",  mobileGrid: "23/2/31/16" },
-  { src: "/images/team/team-portrait-2.jpeg", speed: 0.9,  grid: "22/1/28/8",    mobileGrid: "34/5/42/19" },
-  { src: "/images/team/team-portrait-3.jpeg", speed: 1.05, grid: "26/13/32/20", mobileGrid: "45/2/53/16" },
-  { src: "/images/team/team-portrait-4.jpeg", speed: 0.8,  grid: "35/3/42/10",   mobileGrid: "56/5/64/19" },
-  { src: "/images/team/team-portrait-5.png",  speed: 1.1,  grid: "40/12/47/20",  mobileGrid: "67/2/75/16" },
-  { src: "/images/team/team-profile-1.jpeg",  speed: 0.95, grid: "50/7/57/16",   mobileGrid: "78/5/86/19" },
+  {
+    src: "/images/team/team-action-1.png",
+    speed: 0.7,
+    grid: "1/2/8/9",
+    mobileGrid: "1/2/9/16",
+  },
+  {
+    src: "/images/team/team-action-2.png",
+    speed: 0.85,
+    grid: "5/12/11/19",
+    mobileGrid: "12/5/20/19",
+  },
+  {
+    src: "/images/team/team-portrait-1.jpeg",
+    speed: 1.15,
+    grid: "14/6/20/15",
+    mobileGrid: "23/2/31/16",
+  },
+  {
+    src: "/images/team/team-portrait-2.jpeg",
+    speed: 0.9,
+    grid: "22/1/28/8",
+    mobileGrid: "34/5/42/19",
+  },
+  {
+    src: "/images/team/team-portrait-3.jpeg",
+    speed: 1.05,
+    grid: "26/13/32/20",
+    mobileGrid: "45/2/53/16",
+  },
+  {
+    src: "/images/team/team-portrait-4.jpeg",
+    speed: 0.8,
+    grid: "35/3/42/10",
+    mobileGrid: "56/5/64/19",
+  },
+  {
+    src: "/images/team/team-portrait-5.png",
+    speed: 1.1,
+    grid: "40/12/47/20",
+    mobileGrid: "67/2/75/16",
+  },
+  {
+    src: "/images/team/team-profile-1.jpeg",
+    speed: 0.95,
+    grid: "50/7/57/16",
+    mobileGrid: "78/5/86/19",
+  },
 ];
 
-const TITLE = (
-  <>
-    PROSECURE TEAM
-  </>
-);
+const TITLE = <>PROSECURE TEAM</>;
 
 const titleStyle = (size: string): React.CSSProperties => ({
   position: "absolute",
@@ -50,18 +86,23 @@ export function Team() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const images = Array.from(section.querySelectorAll<HTMLElement>("[data-speed]"));
+    const images = Array.from(
+      section.querySelectorAll<HTMLElement>("[data-speed]"),
+    );
     const clamp = gsap.utils.clamp(-20, 20);
     let lastScrollY = window.scrollY;
     let skewTimer: ReturnType<typeof setTimeout>;
 
     const tick = () => {
-      const scrollY    = window.scrollY;
+      const scrollY = window.scrollY;
       const sectionTop = section.offsetTop;
-      const sectionH   = section.offsetHeight;
-      const vH         = window.innerHeight;
+      const sectionH = section.offsetHeight;
+      const vH = window.innerHeight;
 
-      const p = Math.max(0, Math.min(1, (scrollY - sectionTop + vH) / (sectionH + vH)));
+      const p = Math.max(
+        0,
+        Math.min(1, (scrollY - sectionTop + vH) / (sectionH + vH)),
+      );
 
       images.forEach((img) => {
         const speed = Number(img.dataset.speed) || 1;
@@ -74,10 +115,15 @@ export function Team() {
 
       if (Math.abs(skew) > 0.05) {
         clearTimeout(skewTimer);
-        gsap.to(images, { skewY: skew, duration: 0.35, ease: "power3", overwrite: "auto" });
+        gsap.to(images, {
+          skewY: skew,
+          duration: 0.35,
+          ease: "power3",
+          overwrite: "auto",
+        });
         skewTimer = setTimeout(
           () => gsap.to(images, { skewY: 0, duration: 0.6, ease: "power3" }),
-          200
+          200,
         );
       }
     };
@@ -93,15 +139,55 @@ export function Team() {
   const fontSize = mobileMode ? "10vw" : "8vw";
 
   return (
-    <section ref={sectionRef} id="team" style={{ position: "relative", background: "black" }}>
-      <div style={{ position: "sticky", top: 0, height: 0, overflow: "visible", pointerEvents: "none", zIndex: 3 }}>
-        <h2 className="font-display font-black uppercase select-none" style={{ ...titleStyle(fontSize), color: "white", WebkitTextStroke: "1.5px white", zIndex: -1 }}>
+    <section
+      ref={sectionRef}
+      id="team"
+      style={{ position: "relative", background: "black" }}
+    >
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          height: 0,
+          overflow: "visible",
+          pointerEvents: "none",
+          zIndex: 3,
+        }}
+      >
+        <h2
+          className="font-display font-black uppercase select-none"
+          style={{
+            ...titleStyle(fontSize),
+            color: "white",
+            WebkitTextStroke: "1.5px white",
+            zIndex: -1,
+          }}
+        >
           {TITLE}
         </h2>
-        <h2 aria-hidden="true" className="font-display font-black uppercase select-none" style={{ ...titleStyle(fontSize), color: "transparent", WebkitTextStroke: "1.5px rgba(255,255,255,0.1)", zIndex: 1 }}>
+        <h2
+          aria-hidden="true"
+          className="font-display font-black uppercase select-none"
+          style={{
+            ...titleStyle(fontSize),
+            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(255,255,255,0.1)",
+            zIndex: 1,
+          }}
+        >
           {TITLE}
         </h2>
-        <h2 aria-hidden="true" className="font-display font-black uppercase select-none" style={{ ...titleStyle(fontSize), color: "#C9A84C", mixBlendMode: "screen", opacity: 0.2, zIndex: 1 }}>
+        <h2
+          aria-hidden="true"
+          className="font-display font-black uppercase select-none"
+          style={{
+            ...titleStyle(fontSize),
+            color: "#C9A84C",
+            mixBlendMode: "screen",
+            opacity: 0.2,
+            zIndex: 1,
+          }}
+        >
           {TITLE}
         </h2>
       </div>
@@ -127,10 +213,28 @@ export function Team() {
           <div
             key={i}
             data-speed={item.speed}
-            style={{ gridArea: mobileMode ? item.mobileGrid : item.grid, width: "100%", height: "100%", willChange: "transform" }}
+            style={{
+              gridArea: mobileMode ? item.mobileGrid : item.grid,
+              width: "100%",
+              height: "100%",
+              willChange: "transform",
+            }}
           >
-            <div style={{ position: "relative", width: "100%", height: "100%", overflow: "hidden" }}>
-              <Image src={item.src} alt="ProSecure Team" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+              }}
+            >
+              <Image
+                src={item.src}
+                alt="ProSecure Team"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </div>
           </div>
         ))}

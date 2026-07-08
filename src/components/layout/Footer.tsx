@@ -3,11 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import {
-  gsap,
-  registerScrollTrigger,
-  useGSAP,
-} from "@/hooks/useGSAP";
+import { gsap, registerScrollTrigger, useGSAP } from "@/hooks/useGSAP";
 import { siteConfig } from "@/lib/seo";
 
 export function Footer() {
@@ -54,34 +50,57 @@ export function Footer() {
         {/* Contact Column */}
         <div className="p-8 md:p-12 lg:p-16 border border-brand/30 md:border-y-0 md:border-l-0 md:border-r flex flex-col justify-between">
           <div>
-            <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Kontakt</h3>
+            <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">
+              Kontakt
+            </h3>
             <div className="space-y-6">
-              <a href={`mailto:${siteConfig.email}`} className="block font-display text-lg lg:text-xl hover:text-[#7CB3D1] transition-colors">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="block font-display text-lg lg:text-xl hover:text-[#7CB3D1] transition-colors"
+              >
                 {siteConfig.email}
               </a>
-              <button className="font-display text-sm hover:text-[#7CB3D1] transition-colors">Kontaktieren Sie uns</button>
+              <button className="font-display text-sm hover:text-[#7CB3D1] transition-colors">
+                Kontaktieren Sie uns
+              </button>
             </div>
           </div>
           <div className="mt-20 space-y-2">
-            <p className="font-display text-xs text-white/30 uppercase tracking-widest">ProSecure Services</p>
-            <p className="font-display text-xs text-white/30 uppercase tracking-widest">Sicherheitsdienst Sachsen</p>
-            <Link href="#about" className="group flex items-center gap-2 font-display text-xs uppercase tracking-widest mt-4">
-              Mehr erfahren <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+            <p className="font-display text-xs text-white/30 uppercase tracking-widest">
+              ProSecure Services
+            </p>
+            <p className="font-display text-xs text-white/30 uppercase tracking-widest">
+              Sicherheitsdienst Sachsen
+            </p>
+            <Link
+              href="#about"
+              className="group flex items-center gap-2 font-display text-xs uppercase tracking-widest mt-4"
+            >
+              Mehr erfahren{" "}
+              <ArrowRight
+                size={12}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
           </div>
         </div>
 
         {/* Subscribe Column */}
         <div className="p-8 md:p-12 lg:p-16 border-x border-b md:border-none border-brand/30 mb-12 md:mb-0">
-          <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">Newsletter</h3>
+          <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">
+            Newsletter
+          </h3>
           <div className="relative group">
-            <input 
-              type="email" 
-              placeholder="Email" 
+            <input
+              type="email"
+              placeholder="Email"
               className="w-full bg-transparent border-b border-brand/30 py-4 font-display text-lg focus:outline-none focus:border-brand transition-colors"
             />
             <button className="absolute right-0 bottom-4 hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
-              <ArrowRight size={20} className="text-white/40 group-focus-within:text-[#7CB3D1] hover:text-[#7CB3D1]" />
+              <ArrowRight
+                size={20}
+                className="text-white/40 group-focus-within:text-[#7CB3D1] hover:text-[#7CB3D1]"
+              />
             </button>
           </div>
         </div>
@@ -93,8 +112,8 @@ export function Footer() {
           ref={logoRef}
           className="font-display font-black text-center leading-none text-white sm:text-white"
           style={{
-            fontSize: "clamp(2.5rem, 13.5vw, 24rem)",
-            letterSpacing: "0.02em"
+            fontSize: "clamp(3rem, 16vw, 28rem)",
+            letterSpacing: "0.06em",
           }}
         >
           PROSECURE
@@ -107,11 +126,30 @@ export function Footer() {
           © {currentYear} {siteConfig.name}. Alle Rechte vorbehalten.
         </p>
         <div className="flex gap-8">
-          <Link href="/datenschutz" className="font-display text-[10px] uppercase tracking-widest hover:text-[#7CB3D1] transition-colors">Datenschutz</Link>
-          <Link href="/impressum" className="font-display text-[10px] uppercase tracking-widest hover:text-[#7CB3D1] transition-colors">Impressum</Link>
+          <Link
+            href="/datenschutz"
+            className="font-display text-[10px] uppercase tracking-widest hover:text-[#7CB3D1] transition-colors"
+          >
+            Datenschutz
+          </Link>
+          <Link
+            href="/impressum"
+            className="font-display text-[10px] uppercase tracking-widest hover:text-[#7CB3D1] transition-colors"
+          >
+            Impressum
+          </Link>
         </div>
         <p className="font-display text-[10px] uppercase tracking-widest flex items-center gap-1">
-          Realisiert von <a href="https://invertadigital.de/" target="_blank" rel="noopener noreferrer" className="hover:text-[#7CB3D1] transition-colors cursor-pointer font-bold">INVERTA DIGITAL</a> <ArrowRight size={10} className="-rotate-45" />
+          Realisiert von{" "}
+          <a
+            href="https://invertadigital.de/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#7CB3D1] transition-colors cursor-pointer font-bold"
+          >
+            INVERTA DIGITAL
+          </a>{" "}
+          <ArrowRight size={10} className="-rotate-45" />
         </p>
       </div>
     </footer>

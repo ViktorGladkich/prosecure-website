@@ -120,14 +120,28 @@ export function Contact() {
 
   const onSubmit = async (values: ContactFormValues): Promise<void> => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Fehler beim Senden");
+      }
+
       toast.success("Anfrage gesendet", {
         description: "Wir melden uns in Kürze bei Ihnen.",
       });
       reset();
-      void values;
-    } catch {
-      toast.error("Fehler beim Senden");
+    } catch (error) {
+      console.error(error);
+      toast.error("Fehler beim Senden", {
+        description:
+          "Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns direkt per E-Mail.",
+      });
     }
   };
 
@@ -137,7 +151,7 @@ export function Contact() {
 
   return (
     <section
-      id="contact"
+      id="kontakt"
       ref={sectionRef}
       className="relative bg-black text-white py-24 lg:py-40 overflow-hidden z-20"
     >
@@ -264,11 +278,13 @@ export function Contact() {
                   disabled={isSubmitting}
                   className={cn(
                     "group relative flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]",
-                    isSubmitting && "opacity-80 pointer-events-none"
+                    isSubmitting && "opacity-80 pointer-events-none",
                   )}
                   style={{
-                    background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
-                    boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 8px 24px -4px rgba(27,53,80,0.4), 0 2px 8px rgba(0,0,0,0.2)",
+                    background:
+                      "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+                    boxShadow:
+                      "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 8px 24px -4px rgba(27,53,80,0.4), 0 2px 8px rgba(0,0,0,0.2)",
                     border: "1px solid rgba(255,255,255,0.2)",
                   }}
                 >
@@ -276,9 +292,12 @@ export function Contact() {
                   <span
                     className="absolute inset-0 rounded-2xl pointer-events-none"
                     style={{
-                      background: "linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
-                      maskImage: "linear-gradient(180deg, black 0%, transparent 60%)",
-                      WebkitMaskImage: "linear-gradient(180deg, black 0%, transparent 60%)",
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+                      maskImage:
+                        "linear-gradient(180deg, black 0%, transparent 60%)",
+                      WebkitMaskImage:
+                        "linear-gradient(180deg, black 0%, transparent 60%)",
                     }}
                   />
                   <span className="relative z-10 text-white text-base font-display uppercase tracking-wide">

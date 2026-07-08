@@ -11,20 +11,23 @@ const SERVICES = [
   {
     title: "Baustellenbewachung",
     category: "Areal- & Sachschutz",
-    description: "Lückenloser Schutz Ihrer Bauprojekte. Schutz vor Vandalismus, Sabotage und Diebstahl von Maschinen oder Materialien durch modernste Überwachung und regelmäßige Streifen.",
+    description:
+      "Lückenloser Schutz Ihrer Bauprojekte. Schutz vor Vandalismus, Sabotage und Diebstahl von Maschinen oder Materialien durch modernste Überwachung und regelmäßige Streifen.",
     img: "/images/baustellenbewachung.png",
   },
   {
     title: "Objektschutz",
     category: "Werkschutz & Revierdienst",
-    description: "Zuverlässige Bewachung von Industrieanlagen, Bürokomplexen und Wohnobjekten. Schutz vor unbefugtem Zutritt, Gefahren und Diebstahl durch geschultes Pförtner- und Wachpersonal.",
+    description:
+      "Zuverlässige Bewachung von Industrieanlagen, Bürokomplexen und Wohnobjekten. Schutz vor unbefugtem Zutritt, Gefahren und Diebstahl durch geschultes Pförtner- und Wachpersonal.",
     img: "/images/objektschutz.jpeg",
   },
 
   {
     title: "Anlassbezogene Sicherheit",
     category: "Event Security & Logistik",
-    description: "Professioneller Veranstaltungsschutz, Brandwachen und Absicherung temporärer Gefahrenbereiche. Flexibler Schutz für Corporate-Events, Messen und private Anlässe.",
+    description:
+      "Professioneller Veranstaltungsschutz, Brandwachen und Absicherung temporärer Gefahrenbereiche. Flexibler Schutz für Corporate-Events, Messen und private Anlässe.",
     img: "/images/veranstaltungsschutz.png",
   },
 ];
@@ -40,67 +43,73 @@ export function Services() {
       gsap.fromTo(
         ".services-header-anim",
         { y: 60, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1.2, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
           ease: "power4.out",
           scrollTrigger: {
             trigger: ".services-header-anim",
             start: "top 85%",
-          }
-        }
+          },
+        },
       );
 
       gsap.fromTo(
         ".services-badge-anim",
         { scale: 0.5, opacity: 0 },
-        { 
-          scale: 1, 
-          opacity: 1, 
-          duration: 1, 
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
           delay: 0.2,
           ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: ".services-badge-anim",
             start: "top 85%",
-          }
-        }
+          },
+        },
       );
 
       gsap.fromTo(
         ".service-item-anim",
         { y: 40, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1, 
-          stagger: 0.15, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".services-list-container",
             start: "top 75%",
-          }
-        }
+          },
+        },
       );
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
-    <section id="services" ref={sectionRef} className="w-full flex flex-col bg-black py-20">
+    <section
+      id="leistungen"
+      ref={sectionRef}
+      className="w-full flex flex-col bg-black py-20"
+    >
       <div className="px-[5vw] mb-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-10">
-         <h2 className="services-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white break-words hyphens-auto">
-            Unsere<br />Dienstleistungen
-         </h2>
-         <div className="services-badge-anim hidden md:block">
-            <RotatingBadge />
-         </div>
+        <h2 className="services-header-anim text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-light tracking-tighter text-white break-words hyphens-auto">
+          Unsere
+          <br />
+          Dienstleistungen
+        </h2>
+        <div className="services-badge-anim hidden md:block">
+          <RotatingBadge />
+        </div>
       </div>
       <div className="services-list-container w-full flex flex-col border-t border-white/10">
         {SERVICES.map((item, i) => (
           <div key={i} className="service-item-anim">
-             <ListItem item={item} index={i} />
+            <ListItem item={item} index={i} />
           </div>
         ))}
       </div>
@@ -203,22 +212,34 @@ function RotatingBadge() {
           />
           <text className="text-[7.5px] uppercase font-display font-bold tracking-[0.25em] fill-white/30">
             <textPath xlinkHref="#textPath">
-              PROSECURE SECURITY SOLUTIONS • EXPERT PROTECTION • TRUSTED SECURITY • 
+              PROSECURE SECURITY SOLUTIONS • EXPERT PROTECTION • TRUSTED
+              SECURITY •
             </textPath>
           </text>
         </svg>
       </motion.div>
-      <div 
+      <div
         className="relative w-16 h-16 md:w-24 md:h-24 rounded-full flex items-center justify-center backdrop-blur-3xl shadow-2xl overflow-hidden"
         style={{
-          background: "linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          background:
+            "linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
           border: "1px solid rgba(255,255,255,0.12)",
-          boxShadow: "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 10px 30px rgba(0,0,0,0.5)"
+          boxShadow:
+            "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 10px 30px rgba(0,0,0,0.5)",
         }}
       >
         {/* Top shine */}
-        <span className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%)" }} />
-        <Shield className="w-8 h-8 md:w-11 md:h-11 text-[#7CB3D1]" strokeWidth={1.2} />
+        <span
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%)",
+          }}
+        />
+        <Shield
+          className="w-8 h-8 md:w-11 md:h-11 text-[#7CB3D1]"
+          strokeWidth={1.2}
+        />
       </div>
     </div>
   );

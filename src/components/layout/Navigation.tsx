@@ -2,40 +2,56 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { ChevronRight, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
+import {
+  useGSAP,
+  gsap,
+  registerScrollTrigger,
+  ScrollTrigger,
+} from "@/hooks/useGSAP";
 import { CustomEase } from "gsap/CustomEase";
 import { MenuPanel } from "./MenuPanel";
 
 type LenisInstance = {
   stop?: () => void;
   start?: () => void;
-  scrollTo?: (target: string | HTMLElement, options?: { immediate?: boolean }) => void;
+  scrollTo?: (
+    target: string | HTMLElement,
+    options?: { immediate?: boolean },
+  ) => void;
 };
 
 const GLASS_BTN: React.CSSProperties = {
-  background: "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(80,80,95,0.1) 100%)",
+  background:
+    "linear-gradient(180deg, rgba(200,200,210,0.12) 0%, rgba(80,80,95,0.1) 100%)",
   backdropFilter: "blur(24px) saturate(1.5)",
   WebkitBackdropFilter: "blur(24px) saturate(1.5)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 4px 16px rgba(0,0,0,0.2)",
+  boxShadow:
+    "0 1px 0 0 rgba(255,255,255,0.15) inset, 0 -1px 0 0 rgba(0,0,0,0.2) inset, 0 4px 16px rgba(0,0,0,0.2)",
   border: "1px solid rgba(255,255,255,0.1)",
 };
 
 const BRAND_BTN: React.CSSProperties = {
-  background: "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
-  boxShadow: "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
+  background:
+    "linear-gradient(135deg, rgba(15,39,64,0.9) 0%, rgba(27,53,80,0.85) 50%, rgba(15,39,64,0.95) 100%)",
+  boxShadow:
+    "0 1px 0 0 rgba(255,255,255,0.25) inset, 0 -1px 0 0 rgba(0,0,0,0.15) inset, 0 6px 20px -4px rgba(27,53,80,0.4)",
   border: "1px solid rgba(255,255,255,0.2)",
 };
 
 export function Navigation() {
-  const navRef       = useRef<HTMLElement | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
   const menuPanelRef = useRef<HTMLDivElement | null>(null);
-  const overlayRef   = useRef<HTMLDivElement | null>(null);
-  const tlRef        = useRef<gsap.core.Timeline | null>(null);
-  const isOpenRef    = useRef(false);
-  const [open, setOpen]         = useState(false);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const isOpenRef = useRef(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -51,52 +67,81 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useGSAP(() => {
-    if (typeof window === "undefined") return;
-    registerScrollTrigger();
+  useGSAP(
+    () => {
+      if (typeof window === "undefined") return;
+      registerScrollTrigger();
 
-    gsap.set(".nav-animate-down", { y: -80, opacity: 0 });
-    gsap.to(".nav-animate-down", { y: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: "power3.out" });
+      gsap.set(".nav-animate-down", { y: -80, opacity: 0 });
+      gsap.to(".nav-animate-down", {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        delay: 0.3,
+        ease: "power3.out",
+      });
 
-    // Logo Animation - Starts in center of Hero and moves to header
-    const startY = window.innerHeight * 0.35;
-    gsap.set(".nav-logo-image", {
-      y: startY,
-      scale: 3,
-    });
+      if (isHome) {
+        // Logo Animation - Starts in center of Hero and moves to header
+        const startY = window.innerHeight * 0.35;
+        gsap.set(".nav-logo-image", {
+          y: startY,
+          scale: 3,
+        });
 
-    gsap.to(".nav-logo-image", {
-      y: 0,
-      scale: 1,
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: 300,
-        scrub: 0.6,
+        gsap.to(".nav-logo-image", {
+          y: 0,
+          scale: 1,
+          scrollTrigger: {
+            id: "logo-scroll",
+            trigger: document.body,
+            start: "top top",
+            end: 300,
+            scrub: 0.6,
+          },
+        });
+      } else {
+        const trigger = ScrollTrigger.getById("logo-scroll");
+        if (trigger) trigger.kill();
+        gsap.killTweensOf(".nav-logo-image");
+        gsap.set(".nav-logo-image", { clearProps: "all" });
       }
-    });
-  }, { scope: navRef });
+    },
+    { scope: navRef, dependencies: [pathname] },
+  );
 
   const openNav = useCallback(() => {
     if (!menuPanelRef.current || !overlayRef.current) return;
     isOpenRef.current = true;
     setOpen(true);
 
-    const panel    = menuPanelRef.current;
-    const overlay  = overlayRef.current;
+    const panel = menuPanelRef.current;
+    const overlay = overlayRef.current;
     const bgPanels = panel.querySelectorAll<HTMLElement>(".bg-panel");
-    const links    = panel.querySelectorAll<HTMLElement>(".menu-link-item");
+    const links = panel.querySelectorAll<HTMLElement>(".menu-link-item");
 
     (window as Window & { lenis?: LenisInstance }).lenis?.stop?.();
 
     tlRef.current?.kill();
-    tlRef.current = gsap.timeline({ defaults: { ease: "main", duration: 0.7 } });
+    tlRef.current = gsap.timeline({
+      defaults: { ease: "main", duration: 0.7 },
+    });
     tlRef.current
-      .set(panel,   { display: "block", xPercent: 0 })
+      .set(panel, { display: "block", xPercent: 0 })
       .set(overlay, { display: "block" })
-      .fromTo(overlay,  { autoAlpha: 0 },               { autoAlpha: 1 })
-      .fromTo(bgPanels, { xPercent: -101 },              { xPercent: 0, stagger: 0.12, duration: 0.575 }, "<")
-      .fromTo(links,    { yPercent: 140, rotation: 10 }, { yPercent: 0, rotation: 0, stagger: 0.05 }, "<+=0.35");
+      .fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1 })
+      .fromTo(
+        bgPanels,
+        { xPercent: -101 },
+        { xPercent: 0, stagger: 0.12, duration: 0.575 },
+        "<",
+      )
+      .fromTo(
+        links,
+        { yPercent: 140, rotation: 10 },
+        { yPercent: 0, rotation: 0, stagger: 0.05 },
+        "<+=0.35",
+      );
   }, []);
 
   const closeNav = useCallback(() => {
@@ -104,7 +149,7 @@ export function Navigation() {
     isOpenRef.current = false;
     setOpen(false);
 
-    const panel   = menuPanelRef.current;
+    const panel = menuPanelRef.current;
     const overlay = overlayRef.current;
 
     (window as Window & { lenis?: LenisInstance }).lenis?.start?.();
@@ -113,27 +158,36 @@ export function Navigation() {
     tlRef.current = gsap.timeline({
       defaults: { ease: "main", duration: 0.7 },
       onComplete: () => {
-        gsap.set(panel,   { display: "none" });
+        gsap.set(panel, { display: "none" });
         gsap.set(overlay, { display: "none" });
       },
     });
     tlRef.current
       .to(overlay, { autoAlpha: 0 })
-      .to(panel,   { xPercent: -120 }, "<");
+      .to(panel, { xPercent: -120 }, "<");
   }, []);
 
-  const handleNavLink = useCallback((href: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    closeNav();
-    const lenis = (window as Window & { lenis?: LenisInstance }).lenis;
-    const target = document.querySelector(href);
-    if (!target) return;
-    if (lenis?.scrollTo) {
-      lenis.scrollTo(target as HTMLElement, { immediate: false });
-    } else {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [closeNav]);
+  const handleNavLink = useCallback(
+    (href: string) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      closeNav();
+
+      if (!isHome && href.startsWith("#")) {
+        router.push(`/${href}`);
+        return;
+      }
+
+      const lenis = (window as Window & { lenis?: LenisInstance }).lenis;
+      const target = document.querySelector(href);
+      if (!target) return;
+      if (lenis?.scrollTo) {
+        lenis.scrollTo(target as HTMLElement, { immediate: false });
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    [closeNav, isHome, router],
+  );
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -152,11 +206,15 @@ export function Navigation() {
       >
         <div
           aria-hidden="true"
-          className={cn("pointer-events-none absolute inset-0 -z-10 transition-opacity duration-500", scrolled ? "opacity-100" : "opacity-0")}
+          className={cn(
+            "pointer-events-none absolute inset-0 -z-10 transition-opacity duration-500",
+            scrolled ? "opacity-100" : "opacity-0",
+          )}
           style={{
             backdropFilter: "blur(24px) saturate(1.5)",
             WebkitBackdropFilter: "blur(24px) saturate(1.5)",
-            background: "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4))",
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4))",
             borderBottom: "1px solid rgba(255,255,255,0.05)",
           }}
         />
@@ -169,31 +227,51 @@ export function Navigation() {
               className="group relative flex items-center gap-2.5 px-5 py-2.5 rounded-full overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
               style={GLASS_BTN}
             >
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)" }} />
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)",
+                }}
+              />
               <div className="relative z-10 w-4 h-3 flex flex-col justify-between">
                 <span className="w-full h-[1.5px] bg-white/80 rounded-full group-hover:w-3/4 transition-all duration-300" />
                 <span className="w-full h-[1.5px] bg-white/80 rounded-full" />
                 <span className="w-3/4 h-[1.5px] bg-white/80 rounded-full group-hover:w-full transition-all duration-300" />
               </div>
-              <span className="relative z-10 font-display text-sm uppercase tracking-wide text-white/90">Menu</span>
+              <span className="relative z-10 font-display text-sm uppercase tracking-wide text-white/90">
+                Menu
+              </span>
             </button>
           </div>
 
           <Link
-            href="#hero"
+            href="/"
             className="flex justify-center items-center flex-1 shrink-0"
           >
-            <img src="/logo/logo.png" alt="ProSecure" className="nav-logo-image h-20 w-auto object-contain" />
+            <img
+              src="/logo/logo.png"
+              alt="ProSecure"
+              className="nav-logo-image h-20 w-auto object-contain"
+            />
           </Link>
 
           <div className="flex items-center justify-end gap-3 flex-1">
             <button
-              onClick={handleNavLink("#contact")}
+              onClick={handleNavLink("#kontakt")}
               className="group hidden md:flex items-center gap-2.5 px-5 py-2.5 rounded-full overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
               style={GLASS_BTN}
             >
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)" }} />
-              <span className="relative z-10 font-display text-sm uppercase tracking-wide text-white/90">Kontakt</span>
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%)",
+                }}
+              />
+              <span className="relative z-10 font-display text-sm uppercase tracking-wide text-white/90">
+                Kontakt
+              </span>
               <ChevronRight className="relative z-10 w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
             </button>
             <a
@@ -201,9 +279,17 @@ export function Navigation() {
               className="group relative flex items-center gap-2 px-5 py-2.5 rounded-full overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
               style={BRAND_BTN}
             >
-              <span className="absolute inset-0 rounded-full pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)" }} />
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%)",
+                }}
+              />
               <PhoneCall className="relative z-10 w-3.5 h-3.5 text-white group-hover:scale-110 transition-transform duration-300" />
-              <span className="relative z-10 hidden sm:inline text-white text-sm uppercase font-display tracking-wide">Anrufen</span>
+              <span className="relative z-10 hidden sm:inline text-white text-sm uppercase font-display tracking-wide">
+                Anrufen
+              </span>
             </a>
           </div>
         </div>

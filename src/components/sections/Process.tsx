@@ -38,52 +38,55 @@ const PROCESS_STEPS = [
 export function Process() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useGSAP(() => {
-    if (typeof window === "undefined") return;
-    registerScrollTrigger();
+  useGSAP(
+    () => {
+      if (typeof window === "undefined") return;
+      registerScrollTrigger();
 
-    gsap.utils.toArray<HTMLElement>(".process-row").forEach((row) => {
-      const card = row.querySelector(".process-card-anim");
-      const image = row.querySelector(".process-image-anim");
-      if (!card || !image) return;
+      gsap.utils.toArray<HTMLElement>(".process-row").forEach((row) => {
+        const card = row.querySelector(".process-card-anim");
+        const image = row.querySelector(".process-image-anim");
+        if (!card || !image) return;
 
-      const isEven = row.getAttribute("data-even") === "true";
+        const isEven = row.getAttribute("data-even") === "true";
 
-      // Slide card from left (-120px) or right (120px)
-      gsap.fromTo(
-        card,
-        { x: isEven ? -120 : 120, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.4,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: row,
-            start: "top 80%",
-            toggleActions: "play none none none",
+        // Slide card from left (-120px) or right (120px)
+        gsap.fromTo(
+          card,
+          { x: isEven ? -120 : 120, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.4,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
           },
-        }
-      );
+        );
 
-      // Slide image from opposite side
-      gsap.fromTo(
-        image,
-        { x: isEven ? 120 : -120, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1.4,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: row,
-            start: "top 80%",
-            toggleActions: "play none none none",
+        // Slide image from opposite side
+        gsap.fromTo(
+          image,
+          { x: isEven ? 120 : -120, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.4,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
           },
-        }
-      );
-    });
-  }, { scope: sectionRef });
+        );
+      });
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -109,7 +112,7 @@ export function Process() {
             <div
               key={step.index}
               data-even={isEven ? "true" : "false"}
-              className={`process-row flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 md:gap-32 justify-center`}
+              className={`process-row flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-16 md:gap-32 justify-center`}
             >
               {/* Card */}
               <div className="process-card-anim flex-1 flex flex-col justify-center w-full max-w-lg">
