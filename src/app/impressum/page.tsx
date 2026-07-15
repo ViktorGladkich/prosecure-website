@@ -35,7 +35,7 @@ export default function Impressum() {
             <div className="space-y-8">
               <div>
                 <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
-                  Angaben gemäß § 5 TMG
+                  Angaben gemäß § 5 DDG
                 </h2>
                 <p className="font-display text-xl text-white font-light">
                   {siteConfig.legalName}
@@ -47,6 +47,11 @@ export default function Impressum() {
                   {siteConfig.address.addressLocality}
                   <br />
                   Deutschland
+                </p>
+                <p className="mt-4">
+                  Inhaber: <span className="text-white">{siteConfig.owner}</span>
+                  <br />
+                  Rechtsform: Einzelunternehmen
                 </p>
               </div>
 
@@ -78,37 +83,67 @@ export default function Impressum() {
                   Steuernummer
                 </h2>
                 <p>
-                  Steuernummer gemäß § 27 a Umsatzsteuergesetz:
+                  Steuernummer:
                   <br />
                   <span className="font-mono text-white">
                     {siteConfig.taxNumber}
                   </span>
                 </p>
               </div>
+
+              <div>
+                <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
+                  Verantwortlich für den Inhalt
+                </h2>
+                <p>
+                  Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:
+                  <br />
+                  <span className="text-white">{siteConfig.owner}</span>
+                  <br />
+                  {siteConfig.address.streetAddress},{" "}
+                  {siteConfig.address.postalCode}{" "}
+                  {siteConfig.address.addressLocality}
+                </p>
+              </div>
             </div>
 
-            {/* Column 2: Legal permissions & Insurance */}
+            {/* Column 2: Legal permissions */}
             <div className="space-y-8">
               <div>
                 <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
-                  Aufsichtsbehörde für das Bewachungsgewerbe
+                  Berufsrechtliche Angaben
+                </h2>
+                <p>
+                  Gewerbe: Bewachungsgewerbe
+                  <br />
+                  Erlaubnis nach § 34a Abs. 1 der Gewerbeordnung (GewO)
+                </p>
+              </div>
+
+              <div>
+                <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
+                  Zuständige Erlaubnis- und Aufsichtsbehörde
                 </h2>
                 <p className="text-white font-medium mb-2">
                   {siteConfig.authority}
                 </p>
+                <p>
+                  Schloßhof 2/4
+                  <br />
+                  01796 Pirna
+                </p>
               </div>
-
 
               <div>
                 <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
-                  Qualifikation & Zertifizierungen
+                  Qualifikation
                 </h2>
                 <p>
-                  Zugelassener Sicherheitsdienstleister mit erfolgreicher{" "}
+                  Sicherheitsdienstleister mit erfolgreich abgelegter{" "}
                   <strong className="text-[#7CB3D1] font-normal">
                     {siteConfig.certifications}
-                  </strong>
-                  .
+                  </strong>{" "}
+                  GewO (Industrie- und Handelskammer).
                 </p>
               </div>
             </div>
@@ -118,42 +153,72 @@ export default function Impressum() {
           <div className="border-t border-white/10 mt-16 pt-12 space-y-8 font-sans text-xs text-white/40 leading-relaxed">
             <div>
               <h3 className="font-display text-sm text-white/60 font-medium uppercase tracking-wider mb-2">
-                Streitschlichtung
+                Verbraucherstreitbeilegung
               </h3>
               <p>
-                Die Europäische Kommission stellt eine Plattform zur
-                Online-Streitbeilegung (OS) bereit:
-                <a
-                  href="https://ec.europa.eu/consumers/odr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#7CB3D1] transition-colors ml-1"
-                >
-                  https://ec.europa.eu/consumers/odr
-                </a>
-                .<br />
-                Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind
-                nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
-                einer Verbraucherschlichtungsstelle teilzunehmen.
+                Wir sind nicht bereit oder verpflichtet, an
+                Streitbeilegungsverfahren vor einer
+                Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).
               </p>
             </div>
 
             <div>
               <h3 className="font-display text-sm text-white/60 font-medium uppercase tracking-wider mb-2">
-                Haftung für Inhalte und Links
+                Haftung für Inhalte
               </h3>
               <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
-                Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
-                verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-                Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
-                gespeicherte fremde Informationen zu überwachen oder nach
-                Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
-                hinweisen. Bei Bekanntwerden von entsprechenden
-                Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+                Die Inhalte unserer Seiten wurden mit größter Sorgfalt
+                erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität
+                der Inhalte können wir jedoch keine Gewähr übernehmen. Als
+                Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten
+                nach den allgemeinen Gesetzen verantwortlich. Verpflichtungen
+                zur Entfernung oder Sperrung der Nutzung von Informationen
+                nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine
+                diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+                Kenntnis einer konkreten Rechtsverletzung möglich. Bei
+                Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
+                diese Inhalte umgehend entfernen.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-display text-sm text-white/60 font-medium uppercase tracking-wider mb-2">
+                Haftung für Links
+              </h3>
+              <p>
                 Unser Angebot enthält Links zu externen Websites Dritter, auf
-                deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
-                diese fremden Inhalte auch keine Gewähr übernehmen.
+                deren Inhalte wir keinen Einfluss haben. Deshalb können wir
+                für diese fremden Inhalte auch keine Gewähr übernehmen. Für
+                die Inhalte der verlinkten Seiten ist stets der jeweilige
+                Anbieter oder Betreiber der Seiten verantwortlich. Die
+                verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf
+                mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren
+                zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
+                inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne
+                konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.
+                Bei Bekanntwerden von Rechtsverletzungen werden wir derartige
+                Links umgehend entfernen.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-display text-sm text-white/60 font-medium uppercase tracking-wider mb-2">
+                Urheberrecht
+              </h3>
+              <p>
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
+                diesen Seiten unterliegen dem deutschen Urheberrecht. Die
+                Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+                Verwertung außerhalb der Grenzen des Urheberrechts bedürfen
+                der schriftlichen Zustimmung des jeweiligen Autors bzw.
+                Erstellers. Downloads und Kopien dieser Seite sind nur für den
+                privaten, nicht kommerziellen Gebrauch gestattet. Soweit die
+                Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
+                werden die Urheberrechte Dritter beachtet. Sollten Sie
+                trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
+                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden
+                von Rechtsverletzungen werden wir derartige Inhalte umgehend
+                entfernen.
               </p>
             </div>
           </div>
