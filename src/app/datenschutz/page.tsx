@@ -87,16 +87,18 @@ export default function Datenschutz() {
                 2. Hosting
               </h2>
               <h3 className="font-display text-lg text-white font-normal mt-6">
-                Externes Hosting
+                Externes Hosting (Vercel)
               </h3>
               <p>
-                Diese Website wird bei einem externen Dienstleister gehostet
-                (Hoster). Die personenbezogenen Daten, die auf dieser Website
+                Diese Website wird bei dem externen Dienstleister Vercel Inc.,
+                340 S Lemon Ave #4133, Walnut, CA 91789, USA, gehostet (Hoster). 
+                Die personenbezogenen Daten, die auf dieser Website
                 erfasst werden, werden auf den Servern des Hosters gespeichert.
                 Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen,
-                Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten,
-                Namen, Websitezugriffe und sonstige Daten, die über eine Website
-                generiert werden, handeln.
+                Meta- und Kommunikationsdaten, Websitezugriffe und sonstige Daten, 
+                die über eine Website generiert werden, handeln. Vercel ist nach dem 
+                EU-US Data Privacy Framework (DPF) zertifiziert, was ein angemessenes 
+                Datenschutzniveau nach aktuellen Standards (Stand 2026) garantiert.
               </p>
               <p>
                 Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung
@@ -230,6 +232,73 @@ export default function Datenschutz() {
                 jederzeit unter der im Impressum angegebenen Adresse an uns
                 wenden.
               </p>
+
+              <h3 className="font-display text-lg text-white font-normal mt-6">
+                Recht auf Einschränkung der Verarbeitung
+              </h3>
+              <p>
+                Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer
+                personenbezogenen Daten zu verlangen. Hierzu können Sie sich
+                jederzeit an uns wenden. Das Recht auf Einschränkung der
+                Verarbeitung besteht in folgenden Fällen: Wenn Sie die
+                Richtigkeit Ihrer bei uns gespeicherten personenbezogenen Daten
+                bestreiten, wenn die Verarbeitung Ihrer personenbezogenen Daten
+                unrechtmäßig geschah/geschieht, wenn Sie die Löschung Ihrer
+                personenbezogenen Daten ablehnen und stattdessen die
+                Einschränkung der Nutzung verlangen, oder wenn wir Ihre Daten
+                nicht mehr benötigen, Sie diese jedoch zur Ausübung,
+                Verteidigung oder Geltendmachung von Rechtsansprüchen
+                benötigen.
+              </p>
+
+              <h3 className="font-display text-lg text-white font-normal mt-6">
+                Recht auf Datenübertragbarkeit
+              </h3>
+              <p>
+                Sie haben das Recht, Daten, die wir auf Grundlage Ihrer
+                Einwilligung oder in Erfüllung eines Vertrags automatisiert
+                verarbeiten, an sich oder an einen Dritten in einem gängigen,
+                maschinenlesbaren Format aushändigen zu lassen. Sofern Sie die
+                direkte Übertragung der Daten an einen anderen
+                Verantwortlichen verlangen, erfolgt dies nur, soweit es
+                technisch machbar ist.
+              </p>
+
+              <h3 className="font-display text-lg text-white font-normal mt-6">
+                Widerspruchsrecht gegen die Datenerhebung (Art. 21 DSGVO)
+              </h3>
+              <p>
+                <strong className="text-white">
+                  Wenn die Datenverarbeitung auf Grundlage von Art. 6 Abs. 1
+                  lit. e oder f DSGVO erfolgt, haben Sie jederzeit das Recht,
+                  aus Gründen, die sich aus Ihrer besonderen Situation ergeben,
+                  gegen die Verarbeitung Ihrer personenbezogenen Daten
+                  Widerspruch einzulegen. Die jeweilige Rechtsgrundlage, auf
+                  denen eine Verarbeitung beruht, entnehmen Sie dieser
+                  Datenschutzerklärung. Wenn Sie Widerspruch einlegen, werden
+                  wir Ihre betroffenen personenbezogenen Daten nicht mehr
+                  verarbeiten, es sei denn, wir können zwingende schutzwürdige
+                  Gründe für die Verarbeitung nachweisen, die Ihre Interessen,
+                  Rechte und Freiheiten überwiegen oder die Verarbeitung dient
+                  der Geltendmachung, Ausübung oder Verteidigung von
+                  Rechtsansprüchen.
+                </strong>
+              </p>
+
+              <h3 className="font-display text-lg text-white font-normal mt-6">
+                SSL- bzw. TLS-Verschlüsselung
+              </h3>
+              <p>
+                Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der
+                Übertragung vertraulicher Inhalte, wie zum Beispiel Anfragen,
+                die Sie an uns als Seitenbetreiber senden, eine SSL- bzw.
+                TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen
+                Sie daran, dass die Adresszeile des Browsers von „http://" auf
+                „https://" wechselt und an dem Schloss-Symbol in Ihrer
+                Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert
+                ist, können die Daten, die Sie an uns übermitteln, nicht von
+                Dritten mitgelesen werden.
+              </p>
             </div>
 
             {/* Section 4 */}
@@ -263,17 +332,19 @@ export default function Datenschutz() {
               </p>
 
               <h3 className="font-display text-lg text-white font-normal mt-6">
-                Kontaktformular & E-Mail-Kontakt
+                Kontaktformular &amp; E-Mail-Kontakt
               </h3>
               <p>
                 Wenn Sie uns per Kontaktformular oder E-Mail Anfragen zukommen
                 lassen, werden Ihre Angaben inklusive der von Ihnen dort
                 angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für
                 den Fall von Anschlussfragen bei uns gespeichert. Für die
-                Abwicklung der Formularanfragen nutzen wir den Dienstleister{" "}
-                <strong>Resend</strong>. Ihre Daten werden dabei über eine
-                sichere Verbindung an Resend übertragen. Diese Daten geben wir
-                nicht ohne Ihre Einwilligung weiter.
+                Abwicklung der Formular- und E-Mail-Anfragen nutzen wir den 
+                Dienstleister <strong>Resend, Inc.</strong> (USA). Ihre Daten 
+                werden dabei über eine sichere Verbindung an Resend übertragen. 
+                Die Übermittlung in die USA erfolgt rechtmäßig auf Basis der 
+                Standardvertragsklauseln der EU-Kommission bzw. eines 
+                Angemessenheitsbeschlusses (DPF).
               </p>
               <p>
                 Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6
@@ -293,6 +364,22 @@ export default function Datenschutz() {
                 Datenspeicherung entfällt (z. B. nach abgeschlossener
                 Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen –
                 insbesondere Aufbewahrungsfristen – bleiben unberührt.
+              </p>
+            </div>
+
+            {/* Section 5 */}
+            <div className="space-y-4">
+              <h2 className="font-display text-2xl text-white font-medium uppercase tracking-wider">
+                5. Auftragsverarbeitung
+              </h2>
+              <p>
+                Wir haben mit unseren Dienstleistern (Vercel Inc. für das
+                Hosting und Resend, Inc. für den E-Mail-Versand) Verträge zur
+                Auftragsverarbeitung (AVV) abgeschlossen. Hierbei handelt es
+                sich um Verträge, die durch die Datenschutzgrundverordnung
+                (DSGVO) vorgeschrieben sind und gewährleisten, dass diese die
+                personenbezogenen Daten unserer Websitebesucher nur nach
+                unseren Weisungen und unter Einhaltung der DSGVO verarbeiten.
               </p>
             </div>
           </div>
