@@ -20,11 +20,7 @@ export function localBusinessSchema(): Record<string, unknown> {
       description:
         "Diskreter und zertifizierter Sicherheitsdienst für Events, Galas und Corporate-Formate.",
     },
-    {
-      name: "Personenschutz",
-      description:
-        "Diskreter Personenschutz durch zertifizierte Fachkräfte für Executives und Privatpersonen.",
-    },
+
   ];
 
   return {

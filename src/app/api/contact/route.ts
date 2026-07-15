@@ -27,10 +27,10 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       // We assume the user has a verified domain in Resend.
-      // E.g., info@prosecure.de, but for development we can use onboarding@resend.dev or similar.
+      // E.g., info@prosecuresecurity.de, but for development we can use onboarding@resend.dev or similar.
       // I will put a placeholder or standard 'onboarding@resend.dev' that works for testing.
-      from: "ProSecure Website <onboarding@resend.dev>",
-      to: [process.env.CONTACT_EMAIL || "info@prosecure.de"],
+      from: "ProSecure Website <info@prosecuresecurity.de>",
+      to: [process.env.CONTACT_EMAIL || "info@prosecuresecurity.de"],
       subject: `Neue Kontaktanfrage von ${escapeHtml(firstName)} ${escapeHtml(lastName)}`,
       html: `
         <h2>Neue Kontaktanfrage über die Website</h2>
