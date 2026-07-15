@@ -38,11 +38,7 @@ export const siteConfig = {
   owner: "Niklas Gärtner",
   taxNumber: "21022204685",
   authority: "Landratsamt Sächsische Schweiz-Osterzgebirge",
-  authorityFileNumber: "2520.121.25/26/2_GT",
-  authorityDate: "27.02.2026",
-  guardId: "22017",
   certifications: "IHK-Sachkundeprüfung § 34a",
-  insurance: "Württembergische Versicherung",
   teamSize: "17",
   clientCount: "23",
 } as const;

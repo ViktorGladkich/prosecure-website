@@ -95,40 +95,8 @@ export default function Impressum() {
                 </h2>
                 <p className="text-white font-medium mb-2">
                   {siteConfig.authority}
-                </p>
-                <p className="text-sm space-y-1">
-                  <span className="block">
-                    Erlaubnis nach § 34a GewO erteilt am:{" "}
-                    <strong className="text-white font-normal">
-                      {siteConfig.authorityDate}
-                    </strong>
-                  </span>
-                  <span className="block">
-                    Aktenzeichen:{" "}
-                    <strong className="text-white font-mono font-normal">
-                      {siteConfig.authorityFileNumber}
-                    </strong>
-                  </span>
-                  <span className="block">
-                    Bewacher-ID (Bewachungsregister):{" "}
-                    <strong className="text-white font-mono font-normal">
-                      {siteConfig.guardId}
-                    </strong>
-                  </span>
-                </p>
               </div>
 
-              <div>
-                <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
-                  Berufshaftpflichtversicherung
-                </h2>
-                <p className="text-white font-medium mb-1">
-                  {siteConfig.insurance}
-                </p>
-                <p className="text-sm">
-                  Räumlicher Geltungsbereich: Bundesrepublik Deutschland
-                </p>
-              </div>
 
               <div>
                 <h2 className="font-display text-lg text-white font-medium uppercase tracking-wider mb-3">
