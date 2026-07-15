@@ -95,6 +95,7 @@ export default function Impressum() {
                 </h2>
                 <p className="text-white font-medium mb-2">
                   {siteConfig.authority}
+                </p>
               </div>
 
 
