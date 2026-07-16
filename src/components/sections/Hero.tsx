@@ -88,7 +88,7 @@ export function Hero() {
             alt="Hero Background Mobile"
             fill
             priority
-            sizes="100vw"
+            sizes="(max-width: 767px) 100vw, 0px"
             quality={75}
             className="object-cover"
           />
@@ -100,7 +100,7 @@ export function Hero() {
             alt="Hero Background Desktop"
             fill
             priority
-            sizes="100vw"
+            sizes="(min-width: 768px) 100vw, 0px"
             quality={75}
             className="object-cover"
           />
