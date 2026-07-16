@@ -89,7 +89,19 @@ export function Footer() {
               >
                 {siteConfig.email}
               </a>
-              <button className="font-display text-sm hover:text-[#7CB3D1] transition-colors">
+              <a
+                href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                className="block font-display text-lg lg:text-xl hover:text-[#7CB3D1] transition-colors"
+              >
+                {siteConfig.phone}
+              </a>
+              <button
+                onClick={() => {
+                  const target = document.querySelector("#kontakt");
+                  if (target) target.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="font-display text-sm hover:text-[#7CB3D1] transition-colors block text-left"
+              >
                 Kontaktieren Sie uns
               </button>
             </div>
