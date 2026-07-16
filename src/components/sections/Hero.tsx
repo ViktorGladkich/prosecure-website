@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useGSAP, gsap, registerScrollTrigger } from "@/hooks/useGSAP";
 
@@ -79,19 +80,31 @@ export function Hero() {
       aria-label="Hero"
       className="relative w-full h-svh overflow-hidden bg-black text-white"
     >
-      {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/hero/hero-mobile.jpg" />
-          <img
-            src="/hero/hero-dekstop.jpg"
-            alt="Hero Background"
-            width={1920}
-            height={1280}
-            fetchPriority="high"
-            className="w-full h-full object-cover"
+        {/* Mobile Background */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src="/hero/hero-mobile.jpg"
+            alt="Hero Background Mobile"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover"
           />
-        </picture>
+        </div>
+        {/* Desktop Background */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/hero/hero-dekstop.jpg"
+            alt="Hero Background Desktop"
+            fill
+            priority
+            sizes="100vw"
+            quality={75}
+            className="object-cover"
+          />
+        </div>
       </div>
       <div className="absolute inset-0 bg-black/10 z-0 pointer-events-none" />
 
