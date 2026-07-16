@@ -253,6 +253,8 @@ export function Navigation() {
             <img
               src="/logo/logo.png"
               alt="ProSecure"
+              width={80}
+              height={80}
               className="nav-logo-image h-20 w-auto object-contain"
             />
           </Link>
@@ -276,7 +278,8 @@ export function Navigation() {
               <ChevronRight className="relative z-10 w-4 h-4 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
             </button>
             <a
-              href="tel:+491234567890"
+              href="tel:+491729820162"
+              aria-label="ProSecure anrufen: +49 172 9820162"
               className="group relative flex items-center gap-2 px-5 py-2.5 rounded-full overflow-hidden cursor-pointer transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
               style={BRAND_BTN}
             >

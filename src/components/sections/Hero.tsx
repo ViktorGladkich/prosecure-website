@@ -86,6 +86,9 @@ export function Hero() {
           <img
             src="/hero/hero-dekstop.jpg"
             alt="Hero Background"
+            width={1920}
+            height={1280}
+            fetchPriority="high"
             className="w-full h-full object-cover"
           />
         </picture>
@@ -261,7 +264,9 @@ export function Hero() {
                   border: "1px solid rgba(255,255,255,0.1)",
                 }}
               >
+                <label htmlFor="hero-email" className="sr-only">E-Mail-Adresse</label>
                 <input
+                  id="hero-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -269,6 +274,7 @@ export function Hero() {
                   className="w-full bg-transparent border-none text-[13.5px] text-white placeholder:text-white/35 focus:outline-none focus:ring-0 ml-4 py-3"
                 />
                 <button
+                  aria-label="E-Mail absenden"
                   className="shrink-0 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:scale-105 hover:-rotate-45 transition-all duration-300 ml-2"
                   style={{
                     background:

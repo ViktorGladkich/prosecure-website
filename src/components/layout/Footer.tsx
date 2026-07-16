@@ -79,7 +79,7 @@ export function Footer() {
         {/* Contact Column */}
         <div className="p-8 md:p-12 lg:p-16 border border-brand/30 md:border-y-0 md:border-l-0 md:border-r flex flex-col justify-between">
           <div>
-            <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">
+            <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/60 mb-12">
               Kontakt
             </h3>
             <div className="space-y-6">
@@ -95,10 +95,10 @@ export function Footer() {
             </div>
           </div>
           <div className="mt-20 space-y-2">
-            <p className="font-display text-xs text-white/30 uppercase tracking-widest">
+            <p className="font-display text-xs text-white/50 uppercase tracking-widest">
               ProSecure Services
             </p>
-            <p className="font-display text-xs text-white/30 uppercase tracking-widest">
+            <p className="font-display text-xs text-white/50 uppercase tracking-widest">
               Sicherheitsdienst Sachsen
             </p>
             <Link
@@ -116,18 +116,20 @@ export function Footer() {
 
         {/* Subscribe Column */}
         <div className="p-8 md:p-12 lg:p-16 border-x border-b md:border-none border-brand/30 mb-12 md:mb-0">
-          <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/40 mb-12">
+          <h3 className="font-display text-xs uppercase tracking-[0.3em] text-white/60 mb-12">
             Newsletter
           </h3>
           <form onSubmit={handleEmailSubmit} className="relative group">
+            <label htmlFor="footer-email" className="sr-only">E-Mail-Adresse</label>
             <input
+              id="footer-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               className="w-full bg-transparent border-b border-brand/30 py-4 pr-10 font-display text-lg focus:outline-none focus:border-brand transition-colors"
             />
-            <button type="submit" className="absolute right-0 bottom-4 cursor-pointer hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
+            <button type="submit" aria-label="E-Mail absenden" className="absolute right-0 bottom-4 cursor-pointer hover:translate-x-1 transition-transform group-hover:text-[#7CB3D1]">
               <ArrowRight
                 size={20}
                 className="text-white/40 group-focus-within:text-[#7CB3D1] hover:text-[#7CB3D1]"
@@ -152,7 +154,7 @@ export function Footer() {
       </div>
 
       {/* Legal Bar */}
-      <div className="px-8 md:px-12 py-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/5 opacity-40">
+      <div className="px-8 md:px-12 py-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/5 opacity-60">
         <p className="font-display text-[10px] uppercase tracking-widest">
           © {currentYear} {siteConfig.name}. Alle Rechte vorbehalten.
         </p>

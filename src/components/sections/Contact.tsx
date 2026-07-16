@@ -221,54 +221,66 @@ export function Contact() {
               className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10"
             >
               <div className="relative">
-                <label className={labelClasses}>Vorname</label>
+                <label htmlFor="firstName" className={labelClasses}>Vorname</label>
                 <input
                   type="text"
                   {...register("firstName")}
+                  id="firstName"
+                  aria-label="Vorname"
                   className={inputClasses}
                 />
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>Nachname</label>
+                <label htmlFor="lastName" className={labelClasses}>Nachname</label>
                 <input
                   type="text"
                   {...register("lastName")}
+                  id="lastName"
+                  aria-label="Nachname"
                   className={inputClasses}
                 />
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>Unternehmen (Optional)</label>
+                <label htmlFor="company" className={labelClasses}>Unternehmen (Optional)</label>
                 <input
                   type="text"
                   {...register("company")}
+                  id="company"
+                  aria-label="Unternehmen"
                   className={inputClasses}
                 />
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>E-Mail</label>
+                <label htmlFor="email" className={labelClasses}>E-Mail</label>
                 <input
                   type="email"
                   {...register("email")}
+                  id="email"
+                  aria-label="E-Mail-Adresse"
                   className={inputClasses}
                 />
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>Telefon (Optional)</label>
+                <label htmlFor="phone" className={labelClasses}>Telefon (Optional)</label>
                 <input
                   type="tel"
                   {...register("phone")}
+                  id="phone"
+                  aria-label="Telefonnummer"
                   className={inputClasses}
                 />
               </div>
 
               <div className="relative">
-                <label className={labelClasses}>Leistung</label>
+                <label htmlFor="budget" className={labelClasses}>Leistung</label>
                 <select
                   {...register("budget")}
+                  id="budget"
+                  aria-label="Gewünschte Leistung auswählen"
                   className={cn(inputClasses, "appearance-none bg-black")}
                 >
                   <option>Objektschutz</option>
@@ -295,10 +307,12 @@ export function Contact() {
               </div>
 
               <div className="md:col-span-2 relative">
-                <label className={labelClasses}>Nachricht</label>
+                <label htmlFor="message" className={labelClasses}>Nachricht</label>
                 <textarea
                   rows={1}
                   {...register("message")}
+                  id="message"
+                  aria-label="Ihre Nachricht"
                   className={cn(
                     inputClasses,
                     "resize-none h-auto min-h-[60px] pb-2",

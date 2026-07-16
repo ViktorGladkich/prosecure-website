@@ -86,8 +86,12 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
           {/* Left Side: Narrative Reveal */}
           <div className="lg:col-span-8">
+            <p className="sr-only">
+              Wir glauben nicht an Sicherheit von der Stange. Wahrer Schutz entsteht durch Präzision, Vorausplanung und absolute Hingabe. ProSecure ist das unsichtbare Schutzschild für diejenigen, die keine Kompromisse eingehen.
+            </p>
             <div
               ref={textRef}
+              aria-hidden="true"
               className="flex flex-wrap gap-x-[0.6em] gap-y-6 md:gap-y-10"
             >
               {[
