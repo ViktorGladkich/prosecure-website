@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { ChevronRight, PhoneCall } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -249,12 +250,12 @@ export function Navigation() {
             href="/"
             className="flex justify-center items-center flex-1 shrink-0"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/logo/logo.png"
               alt="ProSecure"
               width={80}
               height={80}
+              priority
               className="nav-logo-image h-20 w-auto object-contain"
             />
           </Link>
