@@ -1,11 +1,11 @@
 # ProSecure - Sicherheitsdienst Dresden
 
-[ProSecure](https://prosecure-dresden.de) (Inh. Niklas Gärtner) ist ein professioneller und zertifizierter Sicherheitsdienstleister mit Sitz in Bad Gottleuba bei Dresden. Wir bieten diskrete und zuverlässige Sicherheitslösungen in Dresden und ganz Sachsen an.
+[ProSecure](https://prosecuresecurity.de) (Inh. Niklas Gärtner) ist ein professioneller und zertifizierter Sicherheitsdienstleister mit Sitz in Bad Gottleuba bei Dresden. Wir bieten diskrete und zuverlässige Sicherheitslösungen in Dresden und ganz Sachsen an.
 
 ## Hauptseiten
-- [Startseite](https://prosecure-dresden.de)
-- [Impressum](https://prosecure-dresden.de/impressum)
-- [Datenschutz](https://prosecure-dresden.de/datenschutz)
+- [Startseite](https://prosecuresecurity.de)
+- [Impressum](https://prosecuresecurity.de/impressum)
+- [Datenschutz](https://prosecuresecurity.de/datenschutz)
 
 ## Unsere Dienstleistungen
 - **Objektschutz:** Stationäre und mobile Bewachung sensibler Objekte mit lückenloser Dokumentation. Ideal für Unternehmen, Behörden und Privatpersonen in Dresden.
@@ -14,7 +14,7 @@
 - **Brandwache:** Professionelle Brandposten und Sicherheitswachen.
 
 ## Kontaktinformationen
-- **Website:** [prosecure-dresden.de](https://prosecure-dresden.de)
+- **Website:** [prosecuresecurity.de](https://prosecuresecurity.de)
 - **E-Mail:** [info@prosecuresecurity.de](mailto:info@prosecuresecurity.de)
 - **Telefon:** [+49 172 9820162](tel:+491729820162)
 - **Adresse:** Königstraße 1, 01816 Bad Gottleuba, Sachsen, Deutschland

@@ -8,7 +8,7 @@ export const siteConfig = {
   name: "ProSecure",
   legalName: "ProSecure Inh. Niklas Gärtner",
   shortName: "ProSecure",
-  url: "https://prosecure-dresden.de",
+  url: "https://prosecuresecurity.de",
   locale: "de_DE",
   description:
     "Professioneller Sicherheitsdienst in Dresden und Sachsen. Objektschutz, Baustellenbewachung, Veranstaltungsschutz & Brandwachen — diskret, zuverlässig, gegründet 2026.",
