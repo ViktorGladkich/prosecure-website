@@ -9,21 +9,21 @@ const PROCESS_STEPS = [
     index: "01",
     title: "Erstberatung",
     description:
-      "Tiefgehende Analyse Ihrer individuellen Sicherheitsbedürfnisse. Wir hören zu und entwickeln diskret erste Lösungsansätze – auf Wunsch unter strenger NDA.",
+      "Tiefgehende Analyse Ihrer individuellen Sicherheitsbedürfnisse. Wir hören zu und entwickeln diskret erste Lösungsansätze.",
     img: "/images/process/erstberatung.png",
   },
   {
     index: "02",
     title: "Risikoanalyse",
     description:
-      "Identifikation von Schwachstellen durch Experten-Scans. Wir antizipieren Szenarien, um präventiv Lücken in Ihrer Sicherheitsstruktur zu schließen.",
+      "Identifikation von Schwachstellen in Ihrer Sicherheitsstruktur. Wir antizipieren Szenarien, um präventiv Lücken zu schließen.",
     img: "/images/process/risikoanalyse.jpeg",
   },
   {
     index: "03",
     title: "Schutzstrategie",
     description:
-      "Entwicklung präziser Einsatzpläne. Die perfekte Symbiose aus modernster Überwachungstechnik und hochqualifiziertem Fachpersonal.",
+      "Entwicklung präziser Einsatzpläne mit hochqualifiziertem Fachpersonal — maßgeschneidert auf Ihre Anforderungen.",
     img: "/images/process/schutzstrategie.png",
   },
   {

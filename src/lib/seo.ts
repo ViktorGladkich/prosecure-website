@@ -22,7 +22,7 @@ export const siteConfig = {
     "Veranstaltungsschutz Dresden",
     "Brandwache Dresden",
   ],
-  phone: "+49 174 8884697",
+  phone: "+49 172 9820162",
   email: "info@prosecuresecurity.de",
   address: {
     streetAddress: "Königstraße 1",
