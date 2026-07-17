@@ -101,7 +101,7 @@ export function Process() {
             [ Strategischer Ablauf ]
           </span>
           <h2 className="font-display font-light text-white text-[clamp(2.5rem,5vw,5rem)] leading-none tracking-tight">
-            Designed to keep information clear and connected
+            Strukturiert für absolute Klarheit und lückenlose Koordination
           </h2>
         </div>
 
