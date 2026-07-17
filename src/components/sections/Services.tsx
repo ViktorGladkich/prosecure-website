@@ -71,21 +71,22 @@ export function Services() {
         },
       );
 
-      gsap.fromTo(
-        ".service-item-anim",
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".services-list-container",
-            start: "top 75%",
+      gsap.utils.toArray<HTMLElement>(".service-item-anim").forEach((item) => {
+        gsap.fromTo(
+          item,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+            },
           },
-        },
-      );
+        );
+      });
     },
     { scope: sectionRef },
   );
@@ -160,8 +161,14 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
 
         {/* Reveal Image - Mobile: Always Visible | Desktop: Hover Reveal */}
         <div className="relative z-20 w-full lg:w-[35vh] h-[20vh] lg:h-[22vh] rounded-xl overflow-hidden">
-          {/* Mobile version (static) */}
-          <div className="lg:hidden w-full h-full relative border border-white/10 rounded-xl overflow-hidden">
+          {/* Mobile version (animated on scroll) */}
+          <motion.div
+            initial={{ scale: 0.85, opacity: 0, y: 20 }}
+            whileInView={{ scale: 1, opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="lg:hidden w-full h-full relative border border-white/10 rounded-xl overflow-hidden"
+          >
             <Image
               src={item.img}
               alt={item.title}
@@ -169,7 +176,7 @@ function ListItem({ item, index }: { item: ServiceItemType; index: number }) {
               sizes="(max-width: 1024px) 100vw, 33vw"
               className="object-cover"
             />
-          </div>
+          </motion.div>
 
           {/* Desktop version (controlled by hover) */}
           <motion.div

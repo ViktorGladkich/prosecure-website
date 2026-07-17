@@ -60,21 +60,22 @@ export function Expertise() {
         },
       );
 
-      gsap.fromTo(
-        ".expertise-card",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".expertise-card",
-            start: "top 85%",
+      gsap.utils.toArray<HTMLElement>(".expertise-card").forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+            },
           },
-        },
-      );
+        );
+      });
     },
     { scope: sectionRef },
   );
